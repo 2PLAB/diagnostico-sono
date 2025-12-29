@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Programa Guiado de Respiração Profunda</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#307de8",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111821",
+            },
+            fontFamily: { "display": ["Manrope", "sans-serif"] }
+          },
+        },
+      }
+    </script>
+    
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        // Substitua pelo seu ID real
+        fbq('init', 'SEU-ID-DO-PIXEL-AQUI'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU-ID-DO-PIXEL-AQUI&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+    
+    <header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center justify-between whitespace-nowrap h-16">
+                <div class="flex items-center gap-3 text-slate-900 dark:text-white">
+                    <span class="material-symbols-outlined text-primary text-2xl">self_improvement</span>
+                    <h2 class="text-lg font-bold tracking-tight">Respiração Profunda</h2>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#beneficios">Benefícios</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#programa">O Programa</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#oferta">Oferta</a>
+                </div>
+                <button onclick="iniciarCheckout()" class="btn-checkout flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+                    <span class="truncate">Garantir Minha Vaga</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="w-full py-20 lg:py-32">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="flex min-h-[480px] flex-col gap-8 rounded-xl items-center justify-center p-8 text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBBmlBJ8IxN5oDPF-TuxqL_4xzwEcLRRAIe10DDYkUFPvERVBx2mA_fjTcu1S--InQFXXEI9rv0OJ4hU68EK-Lfe2vyHc6RzcmwbWl7Zs9nTbZR8ZYaIyaoBKHSFYiQtRoH3zRrLMs5O-rFZ1J4Gua47xTo3CMG5Tm0mynCZnC3zjE9waoUfKm1xYBVcfgJNsQcgiJllV7ADRkyPi7JfqrCvuJQ8EzP4ff24hvA35bY1AdfrUL80AVdqK0eDFMMDriFYa9BYlWeM7E');">
+                    <div class="flex flex-col gap-4 max-w-3xl">
+                        <h1 id="titulo-dinamico" class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-6xl">
+                            Programa Guiado de Respiração Profunda
+                        </h1>
+                        <h2 id="subtitulo-dinamico" class="text-slate-200 text-base md:text-lg font-normal leading-normal">
+                            O programa guiado de respiração profunda que acalma sua mente e corpo para combater a insônia, sem medicamentos.
+                        </h2>
+                    </div>
+                    <button onclick="iniciarCheckout()" class="btn-checkout flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+                        <span class="truncate">Quero Dormir Melhor Agora</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 lg:py-24 text-center">
+            <div class="max-w-3xl mx-auto px-4 flex flex-col items-center gap-4">
+                <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Você se revira na cama noite após noite?</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">Lutar contra a insônia é exaustivo. A falta de sono afeta sua energia, humor e produtividade.</p>
+            </div>
+        </section>
+
+        <section class="w-full py-16 lg:py-24 bg-slate-100 dark:bg-slate-900/50">
+            <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2">
+                    <img alt="" class="rounded-xl object-cover aspect-square" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeyPaWc2VD12NSMM9E04lxS0xkPil_Q-azE584hrR4bObBOyH4cV14K22YywQD03GyDJ5I9caW-4AILnTckcXlSFKs6JKG3pHwjsJpwrvVIoSYXRuOTjY_3hnWPc06zPe0gVuzJuciPcLXfjj1qLd7HItuRYBi9zyTlY2zycNCPAZmXbK8_gylEfUY9aamYeLgBbBXiWU11txOsjCXMJYMR7KzcoB1je_gyCZAH2Rk4du3JwTgMy9IC76HLhUuMT5ulBx8oXc1h-U"/>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col gap-4">
+                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Apresentando o Programa Guiado</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">Uma solução natural e baseada em ciência para regular seu sistema nervoso.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 lg:py-24" id="beneficios">
+            <div class="max-w-5xl mx-auto px-4 flex flex-col items-center gap-12">
+                <div class="text-center max-w-2xl">
+                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Recupere o controle</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-4xl">timer</span>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Adormeça mais rápido</h3>
+                    </div>
+                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-4xl">bedtime</span>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Reduza despertares</h3>
+                    </div>
+                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-4xl">sentiment_calm</span>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Diminua a ansiedade</h3>
+                    </div>
+                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
+                        <span class="material-symbols-outlined text-primary text-4xl">battery_charging_full</span>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Aumente a energia</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 lg:py-24" id="oferta">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-8 lg:p-12 flex flex-col items-center text-center gap-8">
+                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Sua jornada para noites tranquilas começa agora</h2>
+                    <div class="bg-primary/10 dark:bg-primary/20 text-primary font-bold py-2 px-4 rounded-full">OFERTA ESPECIAL DE LANÇAMENTO</div>
+                    <p class="text-5xl font-black text-slate-900 dark:text-white">R$ 97,00</p>
+                    <ul class="flex flex-col gap-4 text-left">
+                        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Acesso vitalício a todo o programa</li>
+                        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Áudios guiados para download</li>
+                    </ul>
+                    <button onclick="iniciarCheckout()" class="btn-checkout w-full max-w-sm flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-6 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+                        <span class="truncate">Garantir Minha Vaga com Desconto</span>
+                    </button>
+                    <div class="flex flex-col items-center gap-4 mt-4">
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+                            <span class="material-symbols-outlined text-xl">shield</span>
+                            <p class="font-bold">Garantia Incondicional de 7 dias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full bg-slate-100 dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 py-8 text-center text-sm text-slate-500">
+            <p>© 2024 Respiração Profunda.</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // 1. Lógica de Personalização (Executa ao carregar)
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const perfil = urlParams.get('perfil');
+        
+        // Elementos Alvo
+        const titulo = document.getElementById('titulo-dinamico');
+        const subtitulo = document.getElementById('subtitulo-dinamico');
+
+        if (perfil && titulo && subtitulo) {
+            if (perfil === 'alto') {
+                titulo.innerHTML = "Protocolo de Emergência para <span class='text-primary'>Mentes Ansiosas</span>";
+                subtitulo.innerText = "Seu diagnóstico apontou um sistema nervoso em alerta máximo. Este método desliga o estresse para o sono profundo.";
+            } 
+            else if (perfil === 'moderado') {
+                titulo.innerHTML = "A Solução para o <span class='text-primary'>Sono Interrompido</span>";
+                subtitulo.innerText = "Você não precisa mais acordar às 3h da manhã. Estabilize seu cortisol para uma noite sem interrupções.";
+            } 
+            else if (perfil === 'baixo') {
+                titulo.innerHTML = "Otimização de <span class='text-primary'>Alta Performance Noturna</span>";
+                subtitulo.innerText = "Transforme seu descanso em uma ferramenta de recuperação cognitiva e física superior.";
+            }
+            
+            // Rastreamento de ViewContent do perfil específico
+            if(typeof fbq === 'function') {
+                fbq('track', 'ViewContent', { content_name: 'SalesPage', content_category: perfil });
+            }
+        }
+    });
+
+    // 2. Função de Checkout (Pixel + Redirecionamento)
+    function iniciarCheckout() {
+        // Dispara o evento 'InitiateCheckout' no Pixel
+        if(typeof fbq === 'function') {
+            fbq('track', 'InitiateCheckout');
+        }
+
+        // Pequeno delay de 300ms para garantir que o Pixel registre o clique antes de sair da página
+        setTimeout(function() {
+            window.location.href = "https://lastlink.com/p/CDB7C9EA2/checkout-payment/";
+        }, 300);
+    }
+</script>
+</body>
+</html>

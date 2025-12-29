@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Compra Confirmada | Respiração Profunda</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#307de8",
+              "success": "#10b981", // Verde para sucesso
+              "background-light": "#f6f7f8",
+              "background-dark": "#111821",
+            },
+            fontFamily: { "display": ["Manrope", "sans-serif"] }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        // LEMBRE-SE DE TROCAR O ID ABAIXO PELO SEU
+        fbq('init', 'SEU-ID-DO-PIXEL-AQUI'); 
+        fbq('track', 'PageView');
+        
+        // Evento mais importante: COMPRA REALIZADA
+        fbq('track', 'Purchase', {
+            value: 97.00,
+            currency: 'BRL',
+            content_name: 'Programa Respiracao Profunda'
+        });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU-ID-DO-PIXEL-AQUI&ev=PageView&noscript=1"
+    /></noscript>
+    </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        
+        <main class="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+            
+            <div class="bg-success/10 p-8 text-center border-b border-success/20">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-success text-white mb-6 shadow-lg shadow-success/30">
+                    <span class="material-symbols-outlined text-5xl">check_circle</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-2">
+                    Pagamento Confirmado!
+                </h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400">
+                    Sua jornada para noites tranquilas começa agora.
+                </p>
+            </div>
+
+            <div class="p-8 md:p-12">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">list</span>
+                    Próximos Passos:
+                </h2>
+
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">Verifique seu E-mail</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">
+                                Enviamos seus dados de acesso (login e senha) para o e-mail cadastrado na compra. Verifique também a caixa de SPAM.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">Acesse a Área de Membros</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">
+                                O conteúdo já está liberado. Você pode começar o Módulo 1 imediatamente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800 text-center">
+                    <a href="https://lastlink.com/login" target="_blank" 
+                       class="inline-flex items-center justify-center w-full md:w-auto px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-primary/30 gap-2">
+                        <span>Acessar Área do Aluno</span>
+                        <span class="material-symbols-outlined">login</span>
+                    </a>
+                    <p class="mt-4 text-xs text-slate-400">
+                        Precisa de ajuda? Responda nosso e-mail ou contate o suporte.
+                    </p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="mt-8 text-center text-sm text-slate-500">
+            <p>© 2024 Respiração Profunda. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
