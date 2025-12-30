@@ -26,6 +26,9 @@
     
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        /* Animação suave para os detalhes do FAQ */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
 
     <script>
@@ -38,14 +41,14 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         
-        // Substitua pelo seu ID real
         fbq('init', 'SEU-ID-DO-PIXEL-AQUI'); 
         fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=SEU-ID-DO-PIXEL-AQUI&ev=PageView&noscript=1"
     /></noscript>
-    </head>
+</head>
+
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
 <div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
     
@@ -57,12 +60,12 @@
                     <h2 class="text-lg font-bold tracking-tight">Respiração Profunda</h2>
                 </div>
                 <div class="hidden md:flex items-center gap-8">
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#beneficios">Benefícios</a>
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#programa">O Programa</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#oferta">Oferta</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#ciencia">Ciência</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#depoimentos">Depoimentos</a>
                 </div>
                 <button onclick="iniciarCheckout()" class="btn-checkout flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
-                    <span class="truncate">Garantir Minha Vaga</span>
+                    <span class="truncate">Garantir Acesso</span>
                 </button>
             </div>
         </div>
@@ -71,16 +74,16 @@
     <main class="flex-grow">
         <section class="w-full py-20 lg:py-32">
             <div class="max-w-5xl mx-auto px-4">
-                <div class="flex min-h-[480px] flex-col gap-8 rounded-xl items-center justify-center p-8 text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBBmlBJ8IxN5oDPF-TuxqL_4xzwEcLRRAIe10DDYkUFPvERVBx2mA_fjTcu1S--InQFXXEI9rv0OJ4hU68EK-Lfe2vyHc6RzcmwbWl7Zs9nTbZR8ZYaIyaoBKHSFYiQtRoH3zRrLMs5O-rFZ1J4Gua47xTo3CMG5Tm0mynCZnC3zjE9waoUfKm1xYBVcfgJNsQcgiJllV7ADRkyPi7JfqrCvuJQ8EzP4ff24hvA35bY1AdfrUL80AVdqK0eDFMMDriFYa9BYlWeM7E');">
-                    <div class="flex flex-col gap-4 max-w-3xl">
-                        <h1 id="titulo-dinamico" class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-6xl">
+                <div class="flex min-h-[480px] flex-col gap-8 rounded-xl items-center justify-center p-8 text-center bg-cover bg-center relative overflow-hidden" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://images.unsplash.com/photo-1511296933631-18b11d6ac5bb?q=80&w=1920&auto=format&fit=crop');">
+                    <div class="flex flex-col gap-4 max-w-3xl z-10">
+                        <h1 id="titulo-dinamico" class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
                             Programa Guiado de Respiração Profunda
                         </h1>
                         <h2 id="subtitulo-dinamico" class="text-slate-200 text-base md:text-lg font-normal leading-normal">
-                            O programa guiado de respiração profunda que acalma sua mente e corpo para combater a insônia, sem medicamentos.
+                            O método científico que acalma sua mente e corpo para combater a insônia, sem medicamentos.
                         </h2>
                     </div>
-                    <button onclick="iniciarCheckout()" class="btn-checkout flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+                    <button onclick="iniciarCheckout()" class="z-10 btn-checkout flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors shadow-lg hover:shadow-primary/50">
                         <span class="truncate">Quero Dormir Melhor Agora</span>
                     </button>
                 </div>
@@ -90,75 +93,216 @@
         <section class="w-full py-16 lg:py-24 text-center">
             <div class="max-w-3xl mx-auto px-4 flex flex-col items-center gap-4">
                 <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Você se revira na cama noite após noite?</h2>
-                <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">Lutar contra a insônia é exaustivo. A falta de sono afeta sua energia, humor e produtividade.</p>
+                <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                    Lutar contra a insônia é exaustivo. A falta de sono afeta sua energia, humor e produtividade.
+                    Mas o problema não é você, é o seu <strong>Sistema Nervoso</strong> que não sabe "desligar".
+                </p>
             </div>
         </section>
 
-        <section class="w-full py-16 lg:py-24 bg-slate-100 dark:bg-slate-900/50">
-            <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-                <div class="w-full md:w-1/2">
-                    <img alt="" class="rounded-xl object-cover aspect-square" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeyPaWc2VD12NSMM9E04lxS0xkPil_Q-azE584hrR4bObBOyH4cV14K22YywQD03GyDJ5I9caW-4AILnTckcXlSFKs6JKG3pHwjsJpwrvVIoSYXRuOTjY_3hnWPc06zPe0gVuzJuciPcLXfjj1qLd7HItuRYBi9zyTlY2zycNCPAZmXbK8_gylEfUY9aamYeLgBbBXiWU11txOsjCXMJYMR7KzcoB1je_gyCZAH2Rk4du3JwTgMy9IC76HLhUuMT5ulBx8oXc1h-U"/>
+        <section id="programa" class="w-full py-16 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">O Protocolo Completo de Higiene do Sono</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4">Não é apenas um ebook. É um sistema multimídia de regulação biológica.</p>
                 </div>
-                <div class="w-full md:w-1/2 flex flex-col gap-4">
-                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Apresentando o Programa Guiado</h2>
-                    <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">Uma solução natural e baseada em ciência para regular seu sistema nervoso.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="w-full py-16 lg:py-24" id="beneficios">
-            <div class="max-w-5xl mx-auto px-4 flex flex-col items-center gap-12">
-                <div class="text-center max-w-2xl">
-                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Recupere o controle</h2>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
-                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
-                        <span class="material-symbols-outlined text-primary text-4xl">timer</span>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Adormeça mais rápido</h3>
+        
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full transition duration-500 group-hover:bg-primary/30"></div>
+                        <div class="relative bg-slate-100 dark:bg-slate-800 rounded-xl aspect-[4/3] flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden p-8 text-center">
+                           <span class="material-symbols-outlined text-6xl text-slate-400 mb-4">devices</span>
+                           <p class="text-slate-500 font-bold uppercase tracking-wider text-sm">Acesso Imediato a:<br>Vídeo Guiado + Manuais Digitais</p>
+                           <p class="text-xs text-slate-400 mt-2">(Visualize no Celular, Tablet ou PC)</p>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
-                        <span class="material-symbols-outlined text-primary text-4xl">bedtime</span>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Reduza despertares</h3>
-                    </div>
-                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
-                        <span class="material-symbols-outlined text-primary text-4xl">sentiment_calm</span>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Diminua a ansiedade</h3>
-                    </div>
-                    <div class="flex flex-col items-center text-center gap-3 p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
-                        <span class="material-symbols-outlined text-primary text-4xl">battery_charging_full</span>
-                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">Aumente a energia</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="w-full py-16 lg:py-24" id="oferta">
-            <div class="max-w-3xl mx-auto px-4">
-                <div class="bg-slate-100 dark:bg-slate-900/50 rounded-xl p-8 lg:p-12 flex flex-col items-center text-center gap-8">
-                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Sua jornada para noites tranquilas começa agora</h2>
-                    <div class="bg-primary/10 dark:bg-primary/20 text-primary font-bold py-2 px-4 rounded-full">OFERTA ESPECIAL DE LANÇAMENTO</div>
-                    <p class="text-5xl font-black text-slate-900 dark:text-white">R$ 97,00</p>
-                    <ul class="flex flex-col gap-4 text-left">
-                        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Acesso vitalício a todo o programa</li>
-                        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Áudios guiados para download</li>
-                    </ul>
-                    <button onclick="iniciarCheckout()" class="btn-checkout w-full max-w-sm flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-6 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
-                        <span class="truncate">Garantir Minha Vaga com Desconto</span>
-                    </button>
-                    <div class="flex flex-col items-center gap-4 mt-4">
-                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
-                            <span class="material-symbols-outlined text-xl">shield</span>
-                            <p class="font-bold">Garantia Incondicional de 7 dias</p>
+                    
+                    <div class="flex flex-col gap-8">
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary mt-1">
+                                <span class="material-symbols-outlined">play_circle</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Sessão Guiada Audiovisual (MP4)</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Um guia visual e sonoro calibrado que dita o ritmo exato de inspiração e expiração. Basta dar o play e seguir a bolha guia para indução ao sono.</p>
+                            </div>
+                        </div>
+        
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary mt-1">
+                                <span class="material-symbols-outlined">auto_stories</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Manual de Engenharia Respiratória</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Domine as 4 técnicas fundamentais: Diafragmática, Quadrada (Box Breathing), Alternada e a potente técnica 4-7-8 para crises de ansiedade.</p>
+                            </div>
+                        </div>
+        
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary mt-1">
+                                <span class="material-symbols-outlined">bed</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">O Guia do Sono Perfeito</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Entenda a arquitetura do sono (REM/NREM), regule seu Ritmo Circadiano e elimine os hábitos invisíveis que destroem sua melatonina.</p>
+                            </div>
+                        </div>
+                        
+                         <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 mt-1">
+                                <span class="material-symbols-outlined">medical_services</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Protocolo de Segurança Clínica</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Instruções precisas sobre postura, ambiente e contraindicações para garantir que sua prática seja 100% segura e livre de tonturas.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="ciencia" class="w-full py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 text-center flex flex-col gap-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Por que seu cérebro <span class="text-primary">precisa</span> disso?</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    O sono não é apenas fechar os olhos. É uma complexa regulação hormonal que falha quando você está estressado. Nosso método atua diretamente na raiz fisiológica.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-4">
+                    <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-primary font-bold text-xl mb-2 flex items-center gap-2"><span class="material-symbols-outlined">psychology</span> Sistema Parassimpático</div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">A respiração diafragmática ativa este sistema, que funciona como um "freio natural" para o estresse, reduzindo a tensão muscular instantaneamente.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-primary font-bold text-xl mb-2 flex items-center gap-2"><span class="material-symbols-outlined">monitor_heart</span> Controle do Cortisol</div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Técnicas específicas reduzem os níveis de cortisol (hormônio do alerta), permitindo que seu corpo entre no estado de repouso necessário.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-primary font-bold text-xl mb-2 flex items-center gap-2"><span class="material-symbols-outlined">schedule</span> Ritmo Circadiano</div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Ajudamos a recalibrar seu "relógio biológico", ensinando seu corpo a reconhecer a hora exata de produzir melatonina e desligar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos" class="w-full py-16 bg-white dark:bg-background-dark">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">Histórias de quem desligou a mente</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                            <span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4">"Eu sofria com a mente acelerada. A técnica 4-7-8 explicada no manual foi a única coisa que parou meus pensamentos obsessivos antes de dormir."</p>
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs text-slate-500">MC</div>
+                            Maria C.
+                        </div>
+                    </div>
+        
+                    <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                            <span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4">"O vídeo guiado é fantástico. Eu não preciso contar mentalmente, só sigo o ritmo da tela. Durmo antes do vídeo acabar."</p>
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs text-slate-500">JP</div>
+                            João P.
+                        </div>
+                    </div>
+        
+                    <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                            <span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4">"Acordava cansado todo dia. Depois que entendi os ciclos de sono e arrumei meu ambiente como o guia ensina, minha energia dobrou."</p>
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs text-slate-500">LS</div>
+                            Lucas S.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 lg:py-24 bg-slate-50 dark:bg-slate-900/30" id="oferta">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 lg:p-12 flex flex-col items-center text-center gap-8 border border-slate-200 dark:border-slate-700">
+                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Sua jornada para noites tranquilas começa agora</h2>
+                    
+                    <div class="bg-primary/10 dark:bg-primary/20 text-primary font-bold py-2 px-6 rounded-full text-sm tracking-wide uppercase">Oferta Especial de Lançamento</div>
+                    
+                    <div class="flex flex-col items-center">
+                        <span class="text-slate-400 line-through text-lg">de R$ 197,00</span>
+                        <p class="text-6xl font-black text-slate-900 dark:text-white tracking-tighter">R$ 97,00</p>
+                        <span class="text-slate-500 text-sm mt-2">Pagamento único. Acesso vitalício.</span>
+                    </div>
+
+                    <ul class="flex flex-col gap-4 text-left w-full max-w-sm mx-auto bg-slate-50 dark:bg-slate-900/50 p-6 rounded-xl">
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Acesso ao Vídeo Guiado</li>
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Ebook Engenharia Respiratória</li>
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Guia do Sono Perfeito</li>
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Atualizações Futuras Grátis</li>
+                    </ul>
+
+                    <button onclick="iniciarCheckout()" class="btn-checkout w-full max-w-sm flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-6 bg-green-600 text-white text-xl font-bold hover:bg-green-500 transition-all shadow-lg hover:shadow-green-500/30 transform hover:-translate-y-1">
+                        <span class="truncate">Quero Garantir Minha Vaga</span>
+                    </button>
+                    
+                    <div class="flex flex-col items-center gap-4 mt-2">
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+                            <span class="material-symbols-outlined text-xl text-primary">verified_user</span>
+                            <p class="font-bold">Garantia Incondicional de 7 dias</p>
+                        </div>
+                        <img src="https://img.shields.io/badge/Compra-Segura-green?style=flat&logo=lock" alt="Compra Segura" class="h-6 opacity-80">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-10 text-slate-900 dark:text-white">Dúvidas Frequentes</h2>
+            <div class="space-y-4">
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        Preciso de algum equipamento?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">Não. Apenas seu celular ou tablet. Para uma experiência imersiva, recomendamos o uso de fones de ouvido durante a sessão guiada.</p>
+                </details>
+                
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        Quanto tempo leva a prática?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">O protocolo principal é projetado para ser feito já na cama e leva poucos minutos. As técnicas de emergência (4-7-8) podem ser feitas em 3 minutos a qualquer hora do dia.</p>
+                </details>
+                
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        E se eu tiver problemas de saúde?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">Nosso guia inclui um capítulo de "Cuidados e Segurança". Se sentir tonturas, orientamos a parar. Se tiver condições respiratórias prévias, consulte seu médico antes.</p>
+                </details>
+                
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        Como recebo o acesso?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">Imediatamente após a aprovação do pagamento, você receberá um e-mail com o link para baixar todos os materiais (Vídeo e PDFs) diretamente no seu dispositivo.</p>
+                </details>
             </div>
         </section>
     </main>
 
     <footer class="w-full bg-slate-100 dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
         <div class="max-w-5xl mx-auto px-4 py-8 text-center text-sm text-slate-500">
-            <p>© 2024 Respiração Profunda.</p>
+            <p class="mb-2">© 2024 Respiração Profunda. Todos os direitos reservados.</p>
+            <p>Este produto não substitui o aconselhamento médico profissional.</p>
         </div>
     </footer>
 </div>
@@ -201,7 +345,7 @@
             fbq('track', 'InitiateCheckout');
         }
 
-        // Pequeno delay de 300ms para garantir que o Pixel registre o clique antes de sair da página
+        // Delay para garantir disparo do pixel
         setTimeout(function() {
             window.location.href = "https://lastlink.com/p/CDB7C9EA2/checkout-payment/";
         }, 300);
