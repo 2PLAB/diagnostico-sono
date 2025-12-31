@@ -29,6 +29,8 @@
         /* Animação suave para os detalhes do FAQ */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
+        /* Rolagem suave para toda a página */
+        html { scroll-behavior: smooth; }
     </style>
 
     <script>
@@ -57,16 +59,16 @@
             <div class="flex items-center justify-between whitespace-nowrap h-16">
                 <div class="flex items-center gap-3 text-slate-900 dark:text-white">
                     <span class="material-symbols-outlined text-primary text-2xl">self_improvement</span>
-                    <h2 class="text-lg font-bold tracking-tight">Respiração Profunda</h2>
+                    <h2 class="text-lg font-bold tracking-tight">Guia do Sono Perfeito</h2>
                 </div>
                 <div class="hidden md:flex items-center gap-8">
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#programa">O Programa</a>
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#ciencia">Ciência</a>
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#depoimentos">Depoimentos</a>
                 </div>
-                <button onclick="iniciarCheckout()" class="btn-checkout flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+                <a href="#oferta" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors decoration-0">
                     <span class="truncate">Garantir Acesso</span>
-                </button>
+                </a>
             </div>
         </div>
     </header>
@@ -124,14 +126,14 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-lg text-slate-900 dark:text-white">Sessão Guiada Audiovisual (MP4)</h3>
-<div style="text-align: center; margin: 25px auto 35px auto;">
-    <img src="demoguia.gif" 
-         alt="Demonstração rápida da sessão guiada de respiração"
-         style="width: 100%; max-width: 450px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 1px solid #e0e0e0;">
-    <p style="font-size: 14px; color: #666; margin-top: 10px; font-style: italic;">
-        ⚡ Demonstração rápida (5s) do ritmo visual que acalma seu sistema nervoso.
-    </p>
-</div>
+                                <div style="text-align: center; margin: 25px auto 35px auto;">
+                                    <img src="demoguia.gif" 
+                                         alt="Demonstração rápida da sessão guiada de respiração"
+                                         style="width: 100%; max-width: 450px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 1px solid #e0e0e0;">
+                                    <p style="font-size: 14px; color: #666; margin-top: 10px; font-style: italic;">
+                                        ⚡ Demonstração rápida (5s) do ritmo visual que acalma seu sistema nervoso.
+                                    </p>
+                                </div>
                                 <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Um guia visual e sonoro calibrado que dita o ritmo exato de inspiração e expiração. Basta dar o play e seguir a bolha guia para indução ao sono.</p>
                             </div>
                         </div>
