@@ -225,6 +225,11 @@ src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
         
         if(!email.includes('@') || !email.includes('.')) return alert("Por favor, insira um e-mail válido.");
 
+        // --- AQUI ESTÁ A MÁGICA QUE FALTAVA ---
+        // Avisa o Facebook que ganhamos um Lead
+        fbq('track', 'Lead'); 
+        // ---------------------------------------
+
         // UI Loading no Botão
         btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> Processando...`;
         btn.disabled = true;
@@ -260,4 +265,5 @@ src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
 </script>
 </body>
 </html>
+
 
