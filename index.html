@@ -18,13 +18,20 @@
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
 
 <div id="app">
-    <!-- TELA INICIAL: Foco em Curiosidade e Autoridade -->
+    <!-- TELA INICIAL -->
     <div id="screen-inicio" class="screen active">
         <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 text-center">
+            <div class="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-full mb-6 border border-blue-100 dark:border-blue-800">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                </span>
+                <span class="text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-widest">Apenas 47 vagas de diagnóstico hoje</span>
+            </div>
             <div class="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full mb-6">
                 <span class="material-symbols-outlined text-5xl text-blue-600">psychology</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-6 max-w-4xl text-slate-900 dark:text-white">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-6 max-w-4xl text-slate-900 dark:text-white leading-tight">
                 Seu cérebro não desliga à noite?
             </h1>
             <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -46,8 +53,12 @@
                         <span id="q-number">Pergunta 1 de 20</span>
                         <span id="q-percent">5%</span>
                     </div>
-                    <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
                         <div id="q-bar" class="h-full bg-blue-600 rounded-full transition-all duration-500" style="width: 5%"></div>
+                    </div>
+                    <div id="q-checkpoint" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tighter text-blue-600 dark:text-blue-400">
+                        <span class="material-symbols-outlined text-sm animate-pulse">analytics</span>
+                        <span id="checkpoint-text">Iniciando análise de padrões...</span>
                     </div>
                 </div>
                 <h2 id="q-title" class="text-2xl font-bold mb-8 text-slate-900 dark:text-white leading-tight">Título da Pergunta</h2>
@@ -59,7 +70,7 @@
         </div>
     </div>
 
-    <!-- TELA DE CÁLCULO: Gatilho de Valor e Personalização -->
+    <!-- TELA DE CÁLCULO -->
     <div id="screen-calculando" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
             <div class="mb-8">
@@ -73,24 +84,46 @@
         </div>
     </div>
 
-    <!-- TELA DE CAPTURA: Qualificação e Escassez -->
+    <!-- TELA DE CAPTURA (PONTE DE OURO) -->
     <div id="screen-captura" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
             <div class="w-full max-w-md bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-2xl border border-blue-100 dark:border-slate-800">
                 <div class="mb-6">
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Análise Finalizada com Sucesso</span>
+                    <span class="bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Relatório Gerado com Sucesso</span>
                 </div>
-                <h2 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Diagnóstico Disponível.</h2>
-                <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
-                    Com base nas suas respostas, identificamos o <strong>bloqueio exato</strong> que impede seu descanso profundo. Digite seu e-mail para liberar o acesso ao seu relatório e à técnica recomendada.
+                
+                <!-- SPOILER DO ARQUÉTIPO (A PONTE) -->
+                <div id="archetype-spoiler" class="mb-8 p-6 bg-blue-50/50 dark:bg-blue-900/20 rounded-2xl border-2 border-blue-100 dark:border-blue-800/50 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 opacity-10">
+                        <span class="material-symbols-outlined text-8xl">verified</span>
+                    </div>
+                    <p class="text-[10px] text-blue-600 dark:text-blue-400 uppercase font-black tracking-widest mb-3">Seu Perfil Biológico:</p>
+                    <h3 id="archetype-name" class="text-2xl font-black text-slate-900 dark:text-white mb-3">Calculando...</h3>
+                    <div class="h-px w-12 bg-blue-200 mx-auto mb-3"></div>
+                    <p id="archetype-desc" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
+                        "Detectamos uma anomalia na sua produção de melatonina que explica por que você acorda às 3h da manhã..."
+                    </p>
+                </div>
+
+                <h2 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">Para onde enviamos seu diagnóstico completo?</h2>
+                <p class="text-slate-500 dark:text-slate-400 mb-6 text-xs leading-relaxed">
+                    Insira seu melhor e-mail para desbloquear o **Plano de Ação** adequado para o seu perfil.
                 </p>
-                <input id="email-input" type="email" placeholder="Seu melhor e-mail" class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
-                <button onclick="finalizarLead()" id="btn-finalizar" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 shadow-lg transition-all flex justify-center items-center gap-2">
-                    Ver Meu Resultado Agora
+                <input id="email-input" type="email" placeholder="Digite seu melhor e-mail aqui..." class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-4 focus:ring-blue-500/20 outline-none transition-all font-medium text-center">
+                <button onclick="finalizarLead()" id="btn-finalizar" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl hover:bg-blue-700 shadow-xl shadow-blue-500/20 transition-all flex justify-center items-center gap-3 text-lg group">
+                    LIBERAR MEU DIAGNÓSTICO <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">lock_open</span>
                 </button>
-                <p class="mt-4 text-xs text-slate-400 flex items-center justify-center gap-1">
-                    <span class="material-symbols-outlined text-sm">verified_user</span> Relatório Individual e Sigiloso.
-                </p>
+                <div class="mt-6 flex items-center justify-center gap-4 opacity-50">
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">shield</span>
+                        <span class="text-[10px] font-bold uppercase tracking-tighter">Dados Protegidos</span>
+                    </div>
+                    <div class="w-px h-3 bg-slate-300"></div>
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">bolt</span>
+                        <span class="text-[10px] font-bold uppercase tracking-tighter">Acesso Instantâneo</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -103,39 +136,38 @@
 </div>
 
 <script>
-    // --- ESTRUTURA SPIN SELLING (20 PERGUNTAS) ---
     const questions = [
-        // SITUAÇÃO (S) - Entendendo o cenário atual
-        { title: "Como você avalia a qualidade do seu sono na última semana?", options: [{l: "Excelente (Acordo renovado)", v: 1}, {l: "Regular (Acordo ok)", v: 2}, {l: "Ruim (Acordo exausto)", v: 4}], name: "q1" },
-        { title: "Quanto tempo você leva para pegar no sono?", options: [{l: "Menos de 15 min", v: 1}, {l: "Entre 15 e 45 min", v: 2}, {l: "Mais de 1 hora", v: 3}], name: "q2" },
-        { title: "Você acorda durante a madrugada?", options: [{l: "Nunca", v: 0}, {l: "Às vezes (para ir ao banheiro)", v: 2}, {l: "Sempre (e demoro a voltar)", v: 4}], name: "q3" },
-        { title: "Qual sensação define sua mente ao deitar?", options: [{l: "Tranquila", v: 1}, {l: "Pensamentos aleatórios", v: 2}, {l: "Preocupação/Ansiedade", v: 4}], name: "q4" },
-        { title: "Você usa telas (celular/TV) na cama?", options: [{l: "Não", v: 0}, {l: "Um pouco", v: 2}, {l: "Sim, até dormir", v: 3}], name: "q5" },
+        // SITUAÇÃO
+        { title: "Como você avalia a qualidade do seu sono na última semana?", options: [{l: "Excelente", v: 1, cat: "N"}, {l: "Regular", v: 2, cat: "M"}, {l: "Ruim", v: 4, cat: "C"}], name: "q1" },
+        { title: "Quanto tempo você leva para pegar no sono?", options: [{l: "Menos de 15 min", v: 1, cat: "N"}, {l: "Entre 15 e 45 min", v: 2, cat: "M"}, {l: "Mais de 1 hora", v: 3, cat: "C"}], name: "q2" },
+        { title: "Você acorda durante a madrugada?", options: [{l: "Nunca", v: 0, cat: "N"}, {l: "Às vezes", v: 2, cat: "M"}, {l: "Sempre", v: 4, cat: "M"}], name: "q3" },
+        { title: "Qual sensação define sua mente ao deitar?", options: [{l: "Tranquila", v: 1, cat: "N"}, {l: "Pensamentos aleatórios", v: 2, cat: "C"}, {l: "Preocupação/Ansiedade", v: 4, cat: "C"}], name: "q4" },
+        { title: "Você usa telas (celular/TV) na cama?", options: [{l: "Não", v: 0, cat: "N"}, {l: "Um pouco", v: 2, cat: "M"}, {l: "Sim, até dormir", v: 3, cat: "M"}], name: "q5" },
         
-        // PROBLEMA (P) - Identificando as dores específicas
-        { title: "Você sente que sua memória ou foco falham durante o dia?", options: [{l: "Raramente", v: 1}, {l: "Com frequência", v: 3}, {l: "O tempo todo", v: 5}], name: "q6" },
-        { title: "Com que frequência você sente irritabilidade sem motivo aparente?", options: [{l: "Quase nunca", v: 1}, {l: "Algumas vezes na semana", v: 3}, {l: "Diariamente", v: 5}], name: "q7" },
-        { title: "Você sente necessidade de cafeína ou doces para 'aguentar' o dia?", options: [{l: "Não", v: 1}, {l: "Moderadamente", v: 3}, {l: "Sim, dependo disso", v: 5}], name: "q8" },
-        { title: "Sua produtividade no trabalho caiu nos últimos meses?", options: [{l: "Não, continua igual", v: 1}, {l: "Sinto que poderia render mais", v: 3}, {l: "Sim, caiu drasticamente", v: 5}], name: "q9" },
-        { title: "Você sente dores musculares ou tensão ao acordar?", options: [{l: "Não", v: 1}, {l: "Às vezes", v: 3}, {l: "Sim, sinto o corpo pesado", v: 5}], name: "q10" },
+        // PROBLEMA
+        { title: "Você sente que sua memória ou foco falham durante o dia?", options: [{l: "Raramente", v: 1, cat: "N"}, {l: "Com frequência", v: 3, cat: "A"}, {l: "O tempo todo", v: 5, cat: "A"}], name: "q6" },
+        { title: "Com que frequência você sente irritabilidade sem motivo aparente?", options: [{l: "Quase nunca", v: 1, cat: "N"}, {l: "Algumas vezes", v: 3, cat: "C"}, {l: "Diariamente", v: 5, cat: "C"}], name: "q7" },
+        { title: "Você sente necessidade de cafeína para 'aguentar' o dia?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Moderadamente", v: 3, cat: "A"}, {l: "Sim, dependo disso", v: 5, cat: "A"}], name: "q8" },
+        { title: "Sua produtividade no trabalho caiu nos últimos meses?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Sinto que poderia render mais", v: 3, cat: "A"}, {l: "Sim, caiu drasticamente", v: 5, cat: "A"}], name: "q9" },
+        { title: "Você sente dores musculares ou tensão ao acordar?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Às vezes", v: 3, cat: "M"}, {l: "Sim, sinto o corpo pesado", v: 5, cat: "M"}], name: "q10" },
 
-        // IMPLICAÇÃO (I) - Mostrando as consequências de não resolver
-        { title: "Você teme que a falta de sono afete sua saúde a longo prazo?", options: [{l: "Não penso nisso", v: 1}, {l: "Me preocupa um pouco", v: 4}, {l: "É meu maior medo atual", v: 6}], name: "q11" },
-        { title: "Como está sua paciência com as pessoas próximas (família/amigos)?", options: [{l: "Normal", v: 1}, {l: "Estou mais impaciente", v: 4}, {l: "Sinto que estou me afastando", v: 6}], name: "q12" },
-        { title: "Você sente que está 'envelhecendo' mais rápido por não dormir?", options: [{l: "Não", v: 1}, {l: "Sinto no meu rosto/olheiras", v: 4}, {l: "Sinto no meu vigor físico", v: 6}], name: "q13" },
-        { title: "Quanto você já investiu em soluções que não funcionaram?", options: [{l: "Nada ainda", v: 1}, {l: "Algum valor em chás/suplementos", v: 4}, {l: "Muito dinheiro e tempo", v: 6}], name: "q14" },
-        { title: "Se nada mudar, como você estará daqui a 6 meses?", options: [{l: "Igual", v: 2}, {l: "Pior, mais exausto(a)", v: 5}, {l: "Em colapso total", v: 7}], name: "q15" },
+        // IMPLICAÇÃO
+        { title: "Você teme que a falta de sono afete sua saúde a longo prazo?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Me preocupa um pouco", v: 4, cat: "C"}, {l: "É meu maior medo", v: 6, cat: "C"}], name: "q11" },
+        { title: "Como está sua paciência com as pessoas próximas?", options: [{l: "Normal", v: 1, cat: "N"}, {l: "Estou mais impaciente", v: 4, cat: "C"}, {l: "Sinto que estou me afastando", v: 6, cat: "C"}], name: "q12" },
+        { title: "Você sente que está 'envelhecendo' mais rápido por não dormir?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Sinto no meu rosto", v: 4, cat: "M"}, {l: "Sinto no meu vigor físico", v: 6, cat: "M"}], name: "q13" },
+        { title: "Quanto você já investiu em soluções que não funcionaram?", options: [{l: "Nada", v: 1, cat: "N"}, {l: "Algum valor", v: 4, cat: "A"}, {l: "Muito dinheiro e tempo", v: 6, cat: "A"}], name: "q14" },
+        { title: "Se nada mudar, como você estará daqui a 6 meses?", options: [{l: "Igual", v: 2, cat: "N"}, {l: "Pior", v: 5, cat: "A"}, {l: "Em colapso total", v: 7, cat: "A"}], name: "q15" },
 
-        // NECESSIDADE DE SOLUÇÃO (N) - Preparando para a oferta
-        { title: "Qual a importância de resolver isso HOJE para você?", options: [{l: "Baixa", v: 1}, {l: "Média", v: 4}, {l: "Prioridade Máxima", v: 8}], name: "q16" },
-        { title: "Você estaria disposto(a) a dedicar 15 min por dia para mudar isso?", options: [{l: "Talvez", v: 2}, {l: "Sim, com certeza", v: 5}, {l: "Faria qualquer coisa", v: 8}], name: "q17" },
-        { title: "Você prefere uma solução natural ou continuar com químicos?", options: [{l: "Tanto faz", v: 2}, {l: "Prefiro natural", v: 5}, {l: "Quero me livrar dos químicos", v: 8}], name: "q18" },
-        { title: "Você acredita que merece voltar a ter noites de paz?", options: [{l: "Sim", v: 5}, {l: "Com certeza", v: 8}], name: "q19" },
-        { title: "Está pronto(a) para ver seu diagnóstico e o plano de ação?", options: [{l: "Sim, vamos lá", v: 5}, {l: "Quero começar agora", v: 10}], name: "q20" }
+        // NECESSIDADE DE SOLUÇÃO
+        { title: "Qual a importância de resolver isso HOJE para você?", options: [{l: "Baixa", v: 1, cat: "N"}, {l: "Média", v: 4, cat: "N"}, {l: "Prioridade Máxima", v: 8, cat: "N"}], name: "q16" },
+        { title: "Você estaria disposto(a) a dedicar 15 min por dia para mudar isso?", options: [{l: "Talvez", v: 2, cat: "N"}, {l: "Sim", v: 5, cat: "N"}, {l: "Faria qualquer coisa", v: 8, cat: "N"}], name: "q17" },
+        { title: "Você prefere uma solução natural ou continuar com químicos?", options: [{l: "Tanto faz", v: 2, cat: "N"}, {l: "Prefiro natural", v: 5, cat: "N"}, {l: "Quero me livrar dos químicos", v: 8, cat: "N"}], name: "q18" },
+        { title: "Você acredita que merece voltar a ter noites de paz?", options: [{l: "Sim", v: 5, cat: "N"}, {l: "Com certeza", v: 8, cat: "N"}], name: "q19" },
+        { title: "Está pronto(a) para ver seu diagnóstico e o plano de ação?", options: [{l: "Sim, vamos lá", v: 5, cat: "N"}, {l: "Quero começar agora", v: 10, cat: "N"}], name: "q20" }
     ];
 
     let currentQ = 0;
-    let score = 0;
+    let scores = { C: 0, M: 0, A: 0, total: 0 };
 
     function navigateTo(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -148,19 +180,25 @@
         window.scrollTo(0,0);
     }
 
+    function updateCheckpoint(pct) {
+        const textEl = document.getElementById('checkpoint-text');
+        if (pct >= 25 && pct < 50) textEl.innerText = "Padrões de estresse noturno detectados...";
+        else if (pct >= 50 && pct < 75) textEl.innerText = "Identificando falhas no ciclo químico...";
+        else if (pct >= 75 && pct < 95) textEl.innerText = "Cruzando dados com perfis neurofisiológicos...";
+        else if (pct >= 95) textEl.innerText = "Diagnóstico concluído com 98% de precisão!";
+    }
+
     function renderQuestion() {
         const q = questions[currentQ];
+        const pct = ((currentQ + 1) / questions.length) * 100;
         document.getElementById('q-number').innerText = `Pergunta ${currentQ + 1} de ${questions.length}`;
-        const pct = ((currentQ+1)/questions.length)*100;
         document.getElementById('q-percent').innerText = `${Math.round(pct)}%`;
         document.getElementById('q-bar').style.width = `${pct}%`;
-        
+        updateCheckpoint(pct);
         const titleEl = document.getElementById('q-title');
         titleEl.innerText = q.title;
-        
         const container = document.getElementById('q-options');
         container.innerHTML = '';
-        
         q.options.forEach(opt => {
             const div = document.createElement('div');
             div.innerHTML = `
@@ -168,7 +206,7 @@
                     <div class="w-6 h-6 rounded-full border-2 border-slate-300 group-hover:border-blue-500 flex items-center justify-center">
                         <div class="w-3 h-3 rounded-full bg-blue-500 opacity-0 transition-opacity check-circle"></div>
                     </div>
-                    <input type="radio" name="quiz_opt" value="${opt.v}" class="hidden" onchange="selectOption(this)">
+                    <input type="radio" name="quiz_opt" value="${opt.v}" data-cat="${opt.cat}" class="hidden" onchange="selectOption(this)">
                     <span class="font-semibold text-lg text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-white">${opt.l}</span>
                 </label>
             `;
@@ -182,47 +220,56 @@
         const label = input.closest('label');
         label.classList.add('border-blue-500', 'bg-blue-50');
         label.querySelector('.check-circle').classList.add('opacity-100');
-        
-        // Auto-avançar para melhorar a fluidez em quizzes longos
         setTimeout(() => nextQuestion(), 400);
     }
 
     function nextQuestion() {
         const selected = document.querySelector('input[name="quiz_opt"]:checked');
-        if(!selected) return; // Removido alert para não quebrar o fluxo
-        
-        score += parseInt(selected.value);
+        if(!selected) return;
+        const val = parseInt(selected.value);
+        const cat = selected.getAttribute('data-cat');
+        if(cat !== 'N') scores[cat] += val;
+        scores.total += val;
         currentQ++;
-
-        if(currentQ < questions.length) {
-            renderQuestion();
-        } else {
-            navigateTo('calculando');
-            iniciarPseudoCalculo();
-        }
+        if(currentQ < questions.length) renderQuestion();
+        else { navigateTo('calculando'); iniciarPseudoCalculo(); }
     }
 
     function iniciarPseudoCalculo() {
-        const textos = [
-            "Analisando padrões de cortisol...",
-            "Verificando desequilíbrio de melatonina...",
-            "Cruzando dados com neurofisiologia...",
-            "Calculando índice de fadiga adrenal...",
-            "Identificando bloqueio do sono profundo...",
-            "Perfil encontrado com 98% de precisão!"
-        ];
+        const textos = ["Analisando picos de cortisol...", "Avaliando adenosina...", "Detectando falhas circadiana...", "Identificando arquétipo...", "Mapeado!"];
         const textoEl = document.getElementById('analise-texto');
         let i = 0;
-        
         const interval = setInterval(() => {
-            if(i < textos.length) {
-                textoEl.innerText = textos[i];
-                i++;
-            } else {
-                clearInterval(interval);
-                navigateTo('captura');
-            }
+            if(i < textos.length) { textoEl.innerText = textos[i]; i++; }
+            else { clearInterval(interval); definirArquétipo(); navigateTo('captura'); }
         }, 800);
+    }
+
+    let finalArchetype = { name: "", desc: "", slug: "" };
+
+    function definirArquétipo() {
+        const { C, M, A } = scores;
+        if (C >= M && C >= A) {
+            finalArchetype = { 
+                name: "O Hipervigilante (Cortisol)", 
+                desc: "Sua mente não desliga. O 'spoiler' do seu diagnóstico indica um excesso de cortisol noturno que mantém seu cérebro em alerta máximo, impedindo a entrada no sono profundo.",
+                slug: "hipervigilante"
+            };
+        } else if (M >= C && M >= A) {
+            finalArchetype = { 
+                name: "O Fragmentado (Melatonina)", 
+                desc: "Seu ciclo circadiano está quebrado. O diagnóstico preliminar aponta que seu corpo interrompe a produção de melatonina precocemente, causando os despertares noturnos.",
+                slug: "fragmentado"
+            };
+        } else {
+            finalArchetype = { 
+                name: "O Exausto Químico (Adenosina)", 
+                desc: "Seu sistema de pressão de sono está falhando. Identificamos uma resistência à adenosina, o que explica por que você se sente exausto mas não consegue descansar.",
+                slug: "exausto"
+            };
+        }
+        document.getElementById('archetype-name').innerText = finalArchetype.name;
+        document.getElementById('archetype-desc').innerText = `"${finalArchetype.desc}"`;
     }
 
     async function finalizarLead() {
@@ -232,18 +279,26 @@
         if(!email.includes('@') || !email.includes('.')) return alert("Por favor, insira um e-mail válido.");
 
         // UI Loading
-        btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> Processando...`;
+        btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> LIBERANDO ACESSO...`;
         btn.disabled = true;
 
-        const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxZ8UyyZ57aMR6O2o2O0jf61DS5nT-a5UdcxqueL0Blpz5FAgVf5JCMoamIjwAgOaV7/exec";
+        // --- LÓGICA DE TRADUÇÃO (ARQUÉTIPO -> NÍVEL) ---
+        // Aqui transformamos a pontuação complexa em "baixo", "moderado", "alto"
+        // para conversar com seu Google Script e Página de Vendas.
+        
+        let perfilBackend;
+        const totalScore = scores.total;
 
-        // --- AQUI ESTÁ A MUDANÇA ---
-        // Voltamos para os termos que seu Backend reconhece: "alto", "moderado", "baixo"
-        // Mantive as pontuações altas (80 e 50) porque agora são 20 perguntas.
-        let perfilSlug;
-        if(score >= 80) perfilSlug = "alto";      // Antes era "critico"
-        else if(score >= 50) perfilSlug = "moderado";
-        else perfilSlug = "baixo";                // Antes era "leve"
+        // Calibragem para 20 perguntas (Pontuação Máxima ~120)
+        if (totalScore >= 75) {
+            perfilBackend = "alto";      // Caso Crítico
+        } else if (totalScore >= 45) {
+            perfilBackend = "moderado";  // Caso Médio
+        } else {
+            perfilBackend = "baixo";     // Caso Leve
+        }
+
+        const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxZ8UyyZ57aMR6O2o2O0jf61DS5nT-a5UdcxqueL0Blpz5FAgVf5JCMoamIjwAgOaV7/exec";
 
         try {
             await fetch(URL_PLANILHA, {
@@ -251,19 +306,25 @@
                 mode: 'no-cors', 
                 cache: 'no-cache',
                 headers: { 'Content-Type': 'application/json' },
-                // Enviamos o 'perfil' já calculado para garantir
-                body: JSON.stringify({ email: email, score: score, perfil: perfilSlug })
+                // Enviamos 'perfil' como o backend espera (alto/moderado/baixo)
+                // Mas também enviamos o 'arquetipo' visual caso você queira salvar na planilha para consulta futura
+                body: JSON.stringify({ 
+                    email: email, 
+                    score: totalScore, 
+                    perfil: perfilBackend, 
+                    arquetipo: finalArchetype.name // Opcional: Salva qual foi o arquétipo visual
+                })
             });
             
-            // Redireciona usando os termos corretos
-            setTimeout(() => {
-                window.location.href = `vendas.html?perfil=${perfilSlug}`;
+            // Redireciona para a página de vendas usando a slug correta (alto, moderado, baixo)
+            setTimeout(() => { 
+                window.location.href = `vendas.html?perfil=${perfilBackend}`; 
             }, 500);
 
         } catch (error) {
             console.error(error);
             // Fallback de segurança
-            window.location.href = `vendas.html?perfil=${perfilSlug}`;
+            window.location.href = `vendas.html?perfil=${perfilBackend}`;
         }
     }
 </script>
