@@ -18,7 +18,7 @@
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
 
 <div id="app">
-    <!-- TELA INICIAL: Foco em Curiosidade e Autoridade -->
+    <!-- TELA INICIAL -->
     <div id="screen-inicio" class="screen active">
         <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 text-center">
             <div class="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full mb-6">
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <!-- TELA DE CÁLCULO: Gatilho de Valor e Personalização -->
+    <!-- TELA DE CÁLCULO -->
     <div id="screen-calculando" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
             <div class="mb-8">
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <!-- TELA DE CAPTURA: Qualificação e Escassez -->
+    <!-- TELA DE CAPTURA -->
     <div id="screen-captura" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
             <div class="w-full max-w-md bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-2xl border border-blue-100 dark:border-slate-800">
@@ -103,30 +103,22 @@
 </div>
 
 <script>
-    // --- ESTRUTURA SPIN SELLING (20 PERGUNTAS) ---
     const questions = [
-        // SITUAÇÃO (S) - Entendendo o cenário atual
         { title: "Como você avalia a qualidade do seu sono na última semana?", options: [{l: "Excelente (Acordo renovado)", v: 1}, {l: "Regular (Acordo ok)", v: 2}, {l: "Ruim (Acordo exausto)", v: 4}], name: "q1" },
         { title: "Quanto tempo você leva para pegar no sono?", options: [{l: "Menos de 15 min", v: 1}, {l: "Entre 15 e 45 min", v: 2}, {l: "Mais de 1 hora", v: 3}], name: "q2" },
         { title: "Você acorda durante a madrugada?", options: [{l: "Nunca", v: 0}, {l: "Às vezes (para ir ao banheiro)", v: 2}, {l: "Sempre (e demoro a voltar)", v: 4}], name: "q3" },
         { title: "Qual sensação define sua mente ao deitar?", options: [{l: "Tranquila", v: 1}, {l: "Pensamentos aleatórios", v: 2}, {l: "Preocupação/Ansiedade", v: 4}], name: "q4" },
         { title: "Você usa telas (celular/TV) na cama?", options: [{l: "Não", v: 0}, {l: "Um pouco", v: 2}, {l: "Sim, até dormir", v: 3}], name: "q5" },
-        
-        // PROBLEMA (P) - Identificando as dores específicas
         { title: "Você sente que sua memória ou foco falham durante o dia?", options: [{l: "Raramente", v: 1}, {l: "Com frequência", v: 3}, {l: "O tempo todo", v: 5}], name: "q6" },
         { title: "Com que frequência você sente irritabilidade sem motivo aparente?", options: [{l: "Quase nunca", v: 1}, {l: "Algumas vezes na semana", v: 3}, {l: "Diariamente", v: 5}], name: "q7" },
         { title: "Você sente necessidade de cafeína ou doces para 'aguentar' o dia?", options: [{l: "Não", v: 1}, {l: "Moderadamente", v: 3}, {l: "Sim, dependo disso", v: 5}], name: "q8" },
         { title: "Sua produtividade no trabalho caiu nos últimos meses?", options: [{l: "Não, continua igual", v: 1}, {l: "Sinto que poderia render mais", v: 3}, {l: "Sim, caiu drasticamente", v: 5}], name: "q9" },
         { title: "Você sente dores musculares ou tensão ao acordar?", options: [{l: "Não", v: 1}, {l: "Às vezes", v: 3}, {l: "Sim, sinto o corpo pesado", v: 5}], name: "q10" },
-
-        // IMPLICAÇÃO (I) - Mostrando as consequências de não resolver
         { title: "Você teme que a falta de sono afete sua saúde a longo prazo?", options: [{l: "Não penso nisso", v: 1}, {l: "Me preocupa um pouco", v: 4}, {l: "É meu maior medo atual", v: 6}], name: "q11" },
         { title: "Como está sua paciência com as pessoas próximas (família/amigos)?", options: [{l: "Normal", v: 1}, {l: "Estou mais impaciente", v: 4}, {l: "Sinto que estou me afastando", v: 6}], name: "q12" },
         { title: "Você sente que está 'envelhecendo' mais rápido por não dormir?", options: [{l: "Não", v: 1}, {l: "Sinto no meu rosto/olheiras", v: 4}, {l: "Sinto no meu vigor físico", v: 6}], name: "q13" },
         { title: "Quanto você já investiu em soluções que não funcionaram?", options: [{l: "Nada ainda", v: 1}, {l: "Algum valor em chás/suplementos", v: 4}, {l: "Muito dinheiro e tempo", v: 6}], name: "q14" },
         { title: "Se nada mudar, como você estará daqui a 6 meses?", options: [{l: "Igual", v: 2}, {l: "Pior, mais exausto(a)", v: 5}, {l: "Em colapso total", v: 7}], name: "q15" },
-
-        // NECESSIDADE DE SOLUÇÃO (N) - Preparando para a oferta
         { title: "Qual a importância de resolver isso HOJE para você?", options: [{l: "Baixa", v: 1}, {l: "Média", v: 4}, {l: "Prioridade Máxima", v: 8}], name: "q16" },
         { title: "Você estaria disposto(a) a dedicar 15 min por dia para mudar isso?", options: [{l: "Talvez", v: 2}, {l: "Sim, com certeza", v: 5}, {l: "Faria qualquer coisa", v: 8}], name: "q17" },
         { title: "Você prefere uma solução natural ou continuar com químicos?", options: [{l: "Tanto faz", v: 2}, {l: "Prefiro natural", v: 5}, {l: "Quero me livrar dos químicos", v: 8}], name: "q18" },
@@ -154,13 +146,10 @@
         const pct = ((currentQ+1)/questions.length)*100;
         document.getElementById('q-percent').innerText = `${Math.round(pct)}%`;
         document.getElementById('q-bar').style.width = `${pct}%`;
-        
         const titleEl = document.getElementById('q-title');
         titleEl.innerText = q.title;
-        
         const container = document.getElementById('q-options');
         container.innerHTML = '';
-        
         q.options.forEach(opt => {
             const div = document.createElement('div');
             div.innerHTML = `
@@ -182,18 +171,14 @@
         const label = input.closest('label');
         label.classList.add('border-blue-500', 'bg-blue-50');
         label.querySelector('.check-circle').classList.add('opacity-100');
-        
-        // Auto-avançar para melhorar a fluidez em quizzes longos
         setTimeout(() => nextQuestion(), 400);
     }
 
     function nextQuestion() {
         const selected = document.querySelector('input[name="quiz_opt"]:checked');
-        if(!selected) return; // Removido alert para não quebrar o fluxo
-        
+        if(!selected) return;
         score += parseInt(selected.value);
         currentQ++;
-
         if(currentQ < questions.length) {
             renderQuestion();
         } else {
@@ -203,17 +188,9 @@
     }
 
     function iniciarPseudoCalculo() {
-        const textos = [
-            "Analisando padrões de cortisol...",
-            "Verificando desequilíbrio de melatonina...",
-            "Cruzando dados com neurofisiologia...",
-            "Calculando índice de fadiga adrenal...",
-            "Identificando bloqueio do sono profundo...",
-            "Perfil encontrado com 98% de precisão!"
-        ];
+        const textos = ["Analisando padrões...", "Verificando melatonina...", "Cruzando dados...", "Perfil encontrado!"];
         const textoEl = document.getElementById('analise-texto');
         let i = 0;
-        
         const interval = setInterval(() => {
             if(i < textos.length) {
                 textoEl.innerText = textos[i];
@@ -228,32 +205,27 @@
     async function finalizarLead() {
         const email = document.getElementById('email-input').value;
         const btn = document.getElementById('btn-finalizar');
-        
-        if(!email.includes('@') || !email.includes('.')) return alert("Por favor, insira um e-mail válido.");
+        if(!email.includes('@') || !email.includes('.')) return alert("E-mail inválido.");
 
-        btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> Processando...`;
+        btn.innerHTML = `Processando...`;
         btn.disabled = true;
 
+        // URL ATUALIZADA PELO USUÁRIO
         const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxZ8UyyZ57aMR6O2o2O0jf61DS5nT-a5UdcxqueL0Blpz5FAgVf5JCMoamIjwAgOaV7/exec";
 
-        let perfilSlug;
-        if(score >= 80) perfilSlug = "critico";
-        else if(score >= 50) perfilSlug = "moderado";
-        else perfilSlug = "leve";
+        let perfilSlug = score >= 80 ? "critico" : (score >= 50 ? "moderado" : "leve");
 
+        // LÓGICA DE ENVIO SIMPLIFICADA (Igual ao original que funcionava)
         try {
             await fetch(URL_PLANILHA, {
-                 method: 'POST',
-    mode: 'no-cors', // Essencial para evitar erros de segurança
-    cache: 'no-cache',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email, score: score, perfil: perfilSlug })
+                method: 'POST',
+                mode: 'no-cors', 
+                body: JSON.stringify({ email: email, score: score, perfil: perfilSlug })
             });
             
             setTimeout(() => {
                 window.location.href = `vendas.html?perfil=${perfilSlug}`;
             }, 500);
-
         } catch (error) {
             window.location.href = `vendas.html?perfil=${perfilSlug}`;
         }
