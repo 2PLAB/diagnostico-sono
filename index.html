@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Diagnóstico de Sono Profundo</title>
+    <title>Diagnóstico de Neurofisiologia do Sono</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
@@ -11,80 +11,85 @@
         body { font-family: 'Inter', sans-serif; }
         .screen { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
         .screen.active { display: block; opacity: 1; }
-        /* Animação de Barra de Progresso Falsa */
         @keyframes loadFake { 0% { width: 0%; } 50% { width: 70%; } 100% { width: 100%; } }
-        .fake-load-bar { animation: loadFake 3s ease-in-out forwards; }
+        .fake-load-bar { animation: loadFake 4s ease-in-out forwards; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
 
 <div id="app">
+    <!-- TELA INICIAL: Foco em Curiosidade e Autoridade -->
     <div id="screen-inicio" class="screen active">
         <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 text-center">
             <div class="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full mb-6">
-                <span class="material-symbols-outlined text-5xl text-blue-600">neurology</span>
+                <span class="material-symbols-outlined text-5xl text-blue-600">psychology</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-6 max-w-4xl text-slate-900 dark:text-white">
                 Seu cérebro não desliga à noite?
             </h1>
             <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Faça o diagnóstico clínico de 1 minuto e descubra qual dos <strong>3 Tipos de Insônia</strong> está afetando seu Sistema Nervoso.
+                Inicie seu <strong>Diagnóstico Neurofisiológico</strong> para identificar qual dos 3 desequilíbrios químicos está impedindo seu sono profundo.
             </p>
             <button onclick="navigateTo('quiz-1')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all text-lg">
-                Começar Análise Gratuita
+                Iniciar Diagnóstico Gratuito
             </button>
-            <p class="mt-4 text-xs text-slate-400 uppercase tracking-widest font-semibold">Baseado em Neurociência</p>
+            <p class="mt-4 text-xs text-slate-400 uppercase tracking-widest font-semibold">Protocolo Baseado em Neurociência Aplicada</p>
         </div>
     </div>
 
+    <!-- CONTAINER DO QUIZ -->
     <div id="quiz-container" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4">
             <div class="w-full max-w-xl bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800">
                 <div id="quiz-progress" class="mb-8">
                     <div class="flex justify-between mb-2 text-xs font-bold uppercase text-slate-400">
-                        <span id="q-number">Pergunta 1 de 5</span>
-                        <span id="q-percent">20%</span>
+                        <span id="q-number">Pergunta 1 de 20</span>
+                        <span id="q-percent">5%</span>
                     </div>
                     <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                        <div id="q-bar" class="h-full bg-blue-600 rounded-full transition-all duration-500" style="width: 20%"></div>
+                        <div id="q-bar" class="h-full bg-blue-600 rounded-full transition-all duration-500" style="width: 5%"></div>
                     </div>
                 </div>
                 <h2 id="q-title" class="text-2xl font-bold mb-8 text-slate-900 dark:text-white leading-tight">Título da Pergunta</h2>
-                <div id="q-options" class="space-y-4">
-                    </div>
+                <div id="q-options" class="space-y-4"></div>
                 <button onclick="nextQuestion()" class="mt-8 w-full bg-slate-900 dark:bg-blue-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors">
-                    Confirmar Resposta <span class="material-symbols-outlined">check</span>
+                    Próxima Etapa <span class="material-symbols-outlined">arrow_forward</span>
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- TELA DE CÁLCULO: Gatilho de Valor e Personalização -->
     <div id="screen-calculando" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-            <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Analisando seus padrões de sono...</h2>
-            <div class="w-full max-w-xs h-4 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-4">
+            <div class="mb-8">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+            </div>
+            <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Processando Perfil Neurofisiológico...</h2>
+            <div class="w-full max-w-xs h-4 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-4 mx-auto">
                 <div class="h-full bg-blue-600 fake-load-bar"></div>
             </div>
-            <div id="analise-texto" class="text-slate-500 text-sm animate-pulse">Cruzando dados com neurofisiologia...</div>
+            <div id="analise-texto" class="text-slate-500 text-sm font-medium">Cruzando padrões de cortisol e melatonina...</div>
         </div>
     </div>
 
+    <!-- TELA DE CAPTURA: Qualificação e Escassez -->
     <div id="screen-captura" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
             <div class="w-full max-w-md bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-2xl border border-blue-100 dark:border-slate-800">
                 <div class="mb-6">
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Diagnóstico Concluído</span>
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Análise Finalizada com Sucesso</span>
                 </div>
-                <h2 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Perfil Encontrado.</h2>
-                <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm">
-                    Identificamos o padrão exato que impede seu descanso. Digite seu e-mail para receber o relatório completo e a técnica recomendada.
+                <h2 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Diagnóstico Disponível.</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Com base nas suas respostas, identificamos o <strong>bloqueio exato</strong> que impede seu descanso profundo. Digite seu e-mail para liberar o acesso ao seu relatório e à técnica recomendada.
                 </p>
-                <input id="email-input" type="email" placeholder="Seu melhor e-mail aqui" class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                <input id="email-input" type="email" placeholder="Seu melhor e-mail" class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
                 <button onclick="finalizarLead()" id="btn-finalizar" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 shadow-lg transition-all flex justify-center items-center gap-2">
                     Ver Meu Resultado Agora
                 </button>
                 <p class="mt-4 text-xs text-slate-400 flex items-center justify-center gap-1">
-                    <span class="material-symbols-outlined text-sm">lock</span> Seus dados estão seguros.
+                    <span class="material-symbols-outlined text-sm">verified_user</span> Relatório Individual e Sigiloso.
                 </p>
             </div>
         </div>
@@ -98,16 +103,36 @@
 </div>
 
 <script>
-    // --- LÓGICA DO QUIZ ---
+    // --- ESTRUTURA SPIN SELLING (20 PERGUNTAS) ---
     const questions = [
+        // SITUAÇÃO (S) - Entendendo o cenário atual
         { title: "Como você avalia a qualidade do seu sono na última semana?", options: [{l: "Excelente (Acordo renovado)", v: 1}, {l: "Regular (Acordo ok)", v: 2}, {l: "Ruim (Acordo exausto)", v: 4}], name: "q1" },
         { title: "Quanto tempo você leva para pegar no sono?", options: [{l: "Menos de 15 min", v: 1}, {l: "Entre 15 e 45 min", v: 2}, {l: "Mais de 1 hora", v: 3}], name: "q2" },
         { title: "Você acorda durante a madrugada?", options: [{l: "Nunca", v: 0}, {l: "Às vezes (para ir ao banheiro)", v: 2}, {l: "Sempre (e demoro a voltar)", v: 4}], name: "q3" },
         { title: "Qual sensação define sua mente ao deitar?", options: [{l: "Tranquila", v: 1}, {l: "Pensamentos aleatórios", v: 2}, {l: "Preocupação/Ansiedade", v: 4}], name: "q4" },
-        { title: "Você usa telas (celular/TV) na cama?", options: [{l: "Não", v: 0}, {l: "Um pouco", v: 2}, {l: "Sim, até dormir", v: 3}], name: "q5" }
-    ];
+        { title: "Você usa telas (celular/TV) na cama?", options: [{l: "Não", v: 0}, {l: "Um pouco", v: 2}, {l: "Sim, até dormir", v: 3}], name: "q5" },
+        
+        // PROBLEMA (P) - Identificando as dores específicas
+        { title: "Você sente que sua memória ou foco falham durante o dia?", options: [{l: "Raramente", v: 1}, {l: "Com frequência", v: 3}, {l: "O tempo todo", v: 5}], name: "q6" },
+        { title: "Com que frequência você sente irritabilidade sem motivo aparente?", options: [{l: "Quase nunca", v: 1}, {l: "Algumas vezes na semana", v: 3}, {l: "Diariamente", v: 5}], name: "q7" },
+        { title: "Você sente necessidade de cafeína ou doces para 'aguentar' o dia?", options: [{l: "Não", v: 1}, {l: "Moderadamente", v: 3}, {l: "Sim, dependo disso", v: 5}], name: "q8" },
+        { title: "Sua produtividade no trabalho caiu nos últimos meses?", options: [{l: "Não, continua igual", v: 1}, {l: "Sinto que poderia render mais", v: 3}, {l: "Sim, caiu drasticamente", v: 5}], name: "q9" },
+        { title: "Você sente dores musculares ou tensão ao acordar?", options: [{l: "Não", v: 1}, {l: "Às vezes", v: 3}, {l: "Sim, sinto o corpo pesado", v: 5}], name: "q10" },
 
-    // Ajustei levemente os pesos das perguntas para garantir perfis mais distintos
+        // IMPLICAÇÃO (I) - Mostrando as consequências de não resolver
+        { title: "Você teme que a falta de sono afete sua saúde a longo prazo?", options: [{l: "Não penso nisso", v: 1}, {l: "Me preocupa um pouco", v: 4}, {l: "É meu maior medo atual", v: 6}], name: "q11" },
+        { title: "Como está sua paciência com as pessoas próximas (família/amigos)?", options: [{l: "Normal", v: 1}, {l: "Estou mais impaciente", v: 4}, {l: "Sinto que estou me afastando", v: 6}], name: "q12" },
+        { title: "Você sente que está 'envelhecendo' mais rápido por não dormir?", options: [{l: "Não", v: 1}, {l: "Sinto no meu rosto/olheiras", v: 4}, {l: "Sinto no meu vigor físico", v: 6}], name: "q13" },
+        { title: "Quanto você já investiu em soluções que não funcionaram?", options: [{l: "Nada ainda", v: 1}, {l: "Algum valor em chás/suplementos", v: 4}, {l: "Muito dinheiro e tempo", v: 6}], name: "q14" },
+        { title: "Se nada mudar, como você estará daqui a 6 meses?", options: [{l: "Igual", v: 2}, {l: "Pior, mais exausto(a)", v: 5}, {l: "Em colapso total", v: 7}], name: "q15" },
+
+        // NECESSIDADE DE SOLUÇÃO (N) - Preparando para a oferta
+        { title: "Qual a importância de resolver isso HOJE para você?", options: [{l: "Baixa", v: 1}, {l: "Média", v: 4}, {l: "Prioridade Máxima", v: 8}], name: "q16" },
+        { title: "Você estaria disposto(a) a dedicar 15 min por dia para mudar isso?", options: [{l: "Talvez", v: 2}, {l: "Sim, com certeza", v: 5}, {l: "Faria qualquer coisa", v: 8}], name: "q17" },
+        { title: "Você prefere uma solução natural ou continuar com químicos?", options: [{l: "Tanto faz", v: 2}, {l: "Prefiro natural", v: 5}, {l: "Quero me livrar dos químicos", v: 8}], name: "q18" },
+        { title: "Você acredita que merece voltar a ter noites de paz?", options: [{l: "Sim", v: 5}, {l: "Com certeza", v: 8}], name: "q19" },
+        { title: "Está pronto(a) para ver seu diagnóstico e o plano de ação?", options: [{l: "Sim, vamos lá", v: 5}, {l: "Quero começar agora", v: 10}], name: "q20" }
+    ];
 
     let currentQ = 0;
     let score = 0;
@@ -130,13 +155,8 @@
         document.getElementById('q-percent').innerText = `${Math.round(pct)}%`;
         document.getElementById('q-bar').style.width = `${pct}%`;
         
-        // Animação suave de entrada
         const titleEl = document.getElementById('q-title');
-        titleEl.style.opacity = 0;
-        setTimeout(() => { 
-            titleEl.innerText = q.title; 
-            titleEl.style.opacity = 1; 
-        }, 200);
+        titleEl.innerText = q.title;
         
         const container = document.getElementById('q-options');
         container.innerHTML = '';
@@ -157,19 +177,19 @@
     }
 
     function selectOption(input) {
-        // Remove seleção visual anterior
         document.querySelectorAll('.check-circle').forEach(el => el.classList.remove('opacity-100'));
         document.querySelectorAll('label').forEach(el => el.classList.remove('border-blue-500', 'bg-blue-50'));
-        
-        // Adiciona visual novo
         const label = input.closest('label');
         label.classList.add('border-blue-500', 'bg-blue-50');
         label.querySelector('.check-circle').classList.add('opacity-100');
+        
+        // Auto-avançar para melhorar a fluidez em quizzes longos
+        setTimeout(() => nextQuestion(), 400);
     }
 
     function nextQuestion() {
         const selected = document.querySelector('input[name="quiz_opt"]:checked');
-        if(!selected) return alert("Por favor, selecione uma opção para continuar.");
+        if(!selected) return; // Removido alert para não quebrar o fluxo
         
         score += parseInt(selected.value);
         currentQ++;
@@ -177,7 +197,6 @@
         if(currentQ < questions.length) {
             renderQuestion();
         } else {
-            // LÓGICA NOVA: Mostrar tela de "Calculando" antes da captura
             navigateTo('calculando');
             iniciarPseudoCalculo();
         }
@@ -185,10 +204,12 @@
 
     function iniciarPseudoCalculo() {
         const textos = [
-            "Analisando níveis de estresse...",
-            "Verificando ciclo circadiano...",
-            "Calculando índice de recuperação...",
-            "Perfil encontrado!"
+            "Analisando padrões de cortisol...",
+            "Verificando desequilíbrio de melatonina...",
+            "Cruzando dados com neurofisiologia...",
+            "Calculando índice de fadiga adrenal...",
+            "Identificando bloqueio do sono profundo...",
+            "Perfil encontrado com 98% de precisão!"
         ];
         const textoEl = document.getElementById('analise-texto');
         let i = 0;
@@ -201,7 +222,7 @@
                 clearInterval(interval);
                 navigateTo('captura');
             }
-        }, 800); // 3.2 segundos total de espera (Gatilho mental de valor)
+        }, 800);
     }
 
     async function finalizarLead() {
@@ -210,35 +231,38 @@
         
         if(!email.includes('@') || !email.includes('.')) return alert("Por favor, insira um e-mail válido.");
 
-        // UI Loading no Botão
+        // UI Loading
         btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> Processando...`;
         btn.disabled = true;
 
-        // Webhook URL (MANTENHA A SUA URL AQUI)
         const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxZ8UyyZ57aMR6O2o2O0jf61DS5nT-a5UdcxqueL0Blpz5FAgVf5JCMoamIjwAgOaV7/exec";
 
-        // Definição do Perfil (Replica Lógica do Backend)
+        // --- AQUI ESTÁ A MUDANÇA ---
+        // Voltamos para os termos que seu Backend reconhece: "alto", "moderado", "baixo"
+        // Mantive as pontuações altas (80 e 50) porque agora são 20 perguntas.
         let perfilSlug;
-        if(score >= 12) perfilSlug = "alto";
-        else if(score >= 8) perfilSlug = "moderado";
-        else perfilSlug = "baixo";
+        if(score >= 80) perfilSlug = "alto";      // Antes era "critico"
+        else if(score >= 50) perfilSlug = "moderado";
+        else perfilSlug = "baixo";                // Antes era "leve"
 
         try {
-            // Envia para o Google Sheets (No-Cors)
             await fetch(URL_PLANILHA, {
                 method: 'POST',
                 mode: 'no-cors', 
-                body: JSON.stringify({ email: email, score: score })
+                cache: 'no-cache',
+                headers: { 'Content-Type': 'application/json' },
+                // Enviamos o 'perfil' já calculado para garantir
+                body: JSON.stringify({ email: email, score: score, perfil: perfilSlug })
             });
             
-            // Redirecionamento Final
+            // Redireciona usando os termos corretos
             setTimeout(() => {
                 window.location.href = `vendas.html?perfil=${perfilSlug}`;
             }, 500);
 
         } catch (error) {
-            console.error("Erro no envio:", error);
-            // Fallback: Redireciona mesmo se der erro no tracking, para não perder a venda
+            console.error(error);
+            // Fallback de segurança
             window.location.href = `vendas.html?perfil=${perfilSlug}`;
         }
     }
