@@ -33,20 +33,22 @@
         html { scroll-behavior: smooth; }
     </style>
     <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1388835336302586');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
-/></noscript>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        // SEU ID REAL INSERIDO AQUI
+        fbq('init', '1388835336302586'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
+    /></noscript>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
@@ -110,14 +112,11 @@ src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="relative group">
                         <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full transition duration-500 group-hover:bg-primary/30"></div>
-                        <div class="relative group">
-    <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full transition duration-500 group-hover:bg-primary/30"></div>
-    <div class="relative rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-        <img src="mockup-bundle.png" 
-             alt="Kit Digital: App de Respiração + Manuais em PDF" 
-             class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
-    </div>
-</div>
+                        <div class="relative rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                            <img src="mockup-bundle.png" 
+                                 alt="Kit Digital: App de Respiração + Manuais em PDF" 
+                                 class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     
                     <div class="flex flex-col gap-8">
@@ -245,13 +244,13 @@ src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
                     <div class="bg-primary/10 dark:bg-primary/20 text-primary font-bold py-2 px-6 rounded-full text-sm tracking-wide uppercase">Oferta Especial de Lançamento</div>
                     
                     <div class="flex flex-col items-center">
-    <span class="text-slate-400 line-through text-lg">de R$ 97,00</span>
-    <div class="flex items-baseline gap-1">
-        <span class="text-2xl text-slate-600 font-bold">Por apenas</span>
-        <p class="text-6xl font-black text-slate-900 dark:text-white tracking-tighter">R$ 34,49</p>
-    </div>
-    <span class="text-slate-500 text-sm mt-2">Menos de R$ 1,15 por dia. Acesso vitalício.</span>
-</div>
+                        <span class="text-slate-400 line-through text-lg">de R$ 97,00</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl text-slate-600 font-bold">Por apenas</span>
+                            <p class="text-6xl font-black text-slate-900 dark:text-white tracking-tighter">R$ 34,49</p>
+                        </div>
+                        <span class="text-slate-500 text-sm mt-2">Menos de R$ 1,15 por dia. Acesso vitalício.</span>
+                    </div>
 
                     <ul class="flex flex-col gap-4 text-left w-full max-w-sm mx-auto bg-slate-50 dark:bg-slate-900/50 p-6 rounded-xl">
                         <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Acesso ao Vídeo Guiado</li>
@@ -322,44 +321,57 @@ src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
 </div>
 
 <script>
-    // 1. Lógica de Personalização (Executa ao carregar)
+    // --- LÓGICA DE PERSONALIZAÇÃO AVANÇADA (ARQUÉTIPOS) ---
     document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
-        const perfil = urlParams.get('perfil');
+        const perfil = urlParams.get('perfil'); // Captura: alto, moderado ou baixo
         
         // Elementos Alvo
         const titulo = document.getElementById('titulo-dinamico');
         const subtitulo = document.getElementById('subtitulo-dinamico');
+        const heroSection = document.querySelector('section'); // Para mudar o background se quiser (opcional)
 
         if (perfil && titulo && subtitulo) {
+            
+            // PERFIL 1: O HIPERVIGILANTE (Alto Score / Cortisol)
+            // Foco: Ansiedade, mente que não para, demora a dormir.
             if (perfil === 'alto') {
-                titulo.innerHTML = "Protocolo de Emergência para <span class='text-primary'>Mentes Ansiosas</span>";
-                subtitulo.innerText = "Seu diagnóstico apontou um sistema nervoso em alerta máximo. Este método desliga o estresse para o sono profundo.";
+                titulo.innerHTML = "Protocolo <span class='text-primary'>Anti-Cortisol</span> para o Perfil Hipervigilante";
+                subtitulo.innerHTML = "Seu diagnóstico confirmou: <strong class='text-white'>excesso de alerta noturno</strong>. Descubra como baixar a guarda do seu sistema nervoso e apagar em 15 minutos.";
             } 
+            
+            // PERFIL 2: O FRAGMENTADO (Médio Score / Melatonina)
+            // Foco: Acorda no meio da noite, sono picado.
             else if (perfil === 'moderado') {
-                titulo.innerHTML = "A Solução para o <span class='text-primary'>Sono Interrompido</span>";
-                subtitulo.innerText = "Você não precisa mais acordar às 3h da manhã. Estabilize seu cortisol para uma noite sem interrupções.";
+                titulo.innerHTML = "Reparo do <span class='text-primary'>Ciclo da Melatonina</span> (Perfil Fragmentado)";
+                subtitulo.innerHTML = "Você não precisa mais acordar às 3h da manhã. A técnica para blindar seu sono e impedir que a química do despertar ative antes da hora.";
             } 
+            
+            // PERFIL 3: O EXAUSTO QUÍMICO (Baixo Score / Adenosina)
+            // Foco: Dorme mas acorda cansado, falta de energia profunda.
             else if (perfil === 'baixo') {
-                titulo.innerHTML = "Otimização de <span class='text-primary'>Alta Performance Noturna</span>";
-                subtitulo.innerText = "Transforme seu descanso em uma ferramenta de recuperação cognitiva e física superior.";
+                titulo.innerHTML = "Reset da <span class='text-primary'>Adenosina</span>: O Fim do Cansaço Crônico";
+                subtitulo.innerHTML = "Seu corpo esqueceu como recarregar. Use a engenharia respiratória para limpar as toxinas neurais e acordar com energia total.";
             }
             
-            // Rastreamento de ViewContent do perfil específico
+            // TRACKING PRECISO NO FACEBOOK ADS
+            // Isso permite que você crie públicos de Remarketing específicos depois
+            // Ex: "Público que viu página de Cortisol mas não comprou"
             if(typeof fbq === 'function') {
-                fbq('track', 'ViewContent', { content_name: 'SalesPage', content_category: perfil });
+                fbq('track', 'ViewContent', { 
+                    content_name: 'SalesPage', 
+                    content_category: perfil, // 'alto', 'moderado', 'baixo'
+                    content_type: 'product'
+                });
             }
         }
     });
 
-    // 2. Função de Checkout (Pixel + Redirecionamento)
+    // CHECKOUT SEGURO
     function iniciarCheckout() {
-        // Dispara o evento 'InitiateCheckout' no Pixel
         if(typeof fbq === 'function') {
             fbq('track', 'InitiateCheckout');
         }
-
-        // Delay para garantir disparo do pixel
         setTimeout(function() {
             window.location.href = "https://lastlink.com/p/CDB7C9EA2/checkout-payment/";
         }, 300);
@@ -367,6 +379,3 @@ src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
 </script>
 </body>
 </html>
-
-
-
