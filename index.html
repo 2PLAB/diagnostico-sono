@@ -1,331 +1,380 @@
 <!DOCTYPE html>
-<html class="light" lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Diagnóstico de Neurofisiologia do Sono</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+    <title>Programa Guiado de Respiração Profunda</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#307de8",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111821",
+            },
+            fontFamily: { "display": ["Manrope", "sans-serif"] }
+          },
+        },
+      }
+    </script>
+    
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .screen { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
-        .screen.active { display: block; opacity: 1; }
-        @keyframes loadFake { 0% { width: 0%; } 50% { width: 70%; } 100% { width: 100%; } }
-        .fake-load-bar { animation: loadFake 4s ease-in-out forwards; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        /* Animação suave para os detalhes do FAQ */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        /* Rolagem suave para toda a página */
+        html { scroll-behavior: smooth; }
     </style>
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        // SEU ID REAL INSERIDO AQUI
+        fbq('init', '1388835336302586'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
+    /></noscript>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
 
-<div id="app">
-    <!-- TELA INICIAL -->
-    <div id="screen-inicio" class="screen active">
-        <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 text-center">
-            <div class="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-full mb-6 border border-blue-100 dark:border-blue-800">
-                <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-                </span>
-                <span class="text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-widest">Apenas 47 vagas de diagnóstico hoje</span>
-            </div>
-            <div class="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full mb-6">
-                <span class="material-symbols-outlined text-5xl text-blue-600">psychology</span>
-            </div>
-            <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-6 max-w-4xl text-slate-900 dark:text-white leading-tight">
-                Seu cérebro não desliga à noite?
-            </h1>
-            <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Inicie seu <strong>Diagnóstico Neurofisiológico</strong> para identificar qual dos 3 desequilíbrios químicos está impedindo seu sono profundo.
-            </p>
-            <button onclick="navigateTo('quiz-1')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all text-lg">
-                Iniciar Diagnóstico Gratuito
-            </button>
-            <p class="mt-4 text-xs text-slate-400 uppercase tracking-widest font-semibold">Protocolo Baseado em Neurociência Aplicada</p>
-        </div>
-    </div>
-
-    <!-- CONTAINER DO QUIZ -->
-    <div id="quiz-container" class="screen">
-        <div class="min-h-screen flex flex-col items-center justify-center p-4">
-            <div class="w-full max-w-xl bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800">
-                <div id="quiz-progress" class="mb-8">
-                    <div class="flex justify-between mb-2 text-xs font-bold uppercase text-slate-400">
-                        <span id="q-number">Pergunta 1 de 20</span>
-                        <span id="q-percent">5%</span>
-                    </div>
-                    <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
-                        <div id="q-bar" class="h-full bg-blue-600 rounded-full transition-all duration-500" style="width: 5%"></div>
-                    </div>
-                    <div id="q-checkpoint" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tighter text-blue-600 dark:text-blue-400">
-                        <span class="material-symbols-outlined text-sm animate-pulse">analytics</span>
-                        <span id="checkpoint-text">Iniciando análise de padrões...</span>
-                    </div>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+    
+    <header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center justify-between whitespace-nowrap h-16">
+                <div class="flex items-center gap-3 text-slate-900 dark:text-white">
+                    <span class="material-symbols-outlined text-primary text-2xl">self_improvement</span>
+                    <h2 class="text-lg font-bold tracking-tight">Guia do Sono Perfeito</h2>
                 </div>
-                <h2 id="q-title" class="text-2xl font-bold mb-8 text-slate-900 dark:text-white leading-tight">Título da Pergunta</h2>
-                <div id="q-options" class="space-y-4"></div>
-                <button onclick="nextQuestion()" class="mt-8 w-full bg-slate-900 dark:bg-blue-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors">
-                    Próxima Etapa <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
+                <div class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#programa">O Programa</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#ciencia">Ciência</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#depoimentos">Depoimentos</a>
+                </div>
+                <a href="#oferta" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors decoration-0">
+                    <span class="truncate">Garantir Acesso</span>
+                </a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- TELA DE CÁLCULO -->
-    <div id="screen-calculando" class="screen">
-        <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-            <div class="mb-8">
-                <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
-            </div>
-            <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Processando Perfil Neurofisiológico...</h2>
-            <div class="w-full max-w-xs h-4 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-4 mx-auto">
-                <div class="h-full bg-blue-600 fake-load-bar"></div>
-            </div>
-            <div id="analise-texto" class="text-slate-500 text-sm font-medium">Cruzando padrões de cortisol e melatonina...</div>
-        </div>
-    </div>
-
-    <!-- TELA DE CAPTURA (PONTE DE OURO) -->
-    <div id="screen-captura" class="screen">
-        <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-            <div class="w-full max-w-md bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-2xl border border-blue-100 dark:border-slate-800">
-                <div class="mb-6">
-                    <span class="bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Relatório Gerado com Sucesso</span>
-                </div>
-                
-                <!-- SPOILER DO ARQUÉTIPO (A PONTE) -->
-                <div id="archetype-spoiler" class="mb-8 p-6 bg-blue-50/50 dark:bg-blue-900/20 rounded-2xl border-2 border-blue-100 dark:border-blue-800/50 relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 opacity-10">
-                        <span class="material-symbols-outlined text-8xl">verified</span>
+    <main class="flex-grow">
+        <section class="w-full py-20 lg:py-32">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="flex min-h-[480px] flex-col gap-8 rounded-xl items-center justify-center p-8 text-center bg-cover bg-center relative overflow-hidden" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://images.unsplash.com/photo-1511296933631-18b11d6ac5bb?q=80&w=1920&auto=format&fit=crop');">
+                    <div class="flex flex-col gap-4 max-w-3xl z-10">
+                        <h1 id="titulo-dinamico" class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
+                            Programa Guiado de Respiração Profunda
+                        </h1>
+                        <h2 id="subtitulo-dinamico" class="text-slate-200 text-base md:text-lg font-normal leading-normal">
+                            O método científico que acalma sua mente e corpo para combater a insônia, sem medicamentos.
+                        </h2>
                     </div>
-                    <p class="text-[10px] text-blue-600 dark:text-blue-400 uppercase font-black tracking-widest mb-3">Seu Perfil Biológico:</p>
-                    <h3 id="archetype-name" class="text-2xl font-black text-slate-900 dark:text-white mb-3">Calculando...</h3>
-                    <div class="h-px w-12 bg-blue-200 mx-auto mb-3"></div>
-                    <p id="archetype-desc" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
-                        "Detectamos uma anomalia na sua produção de melatonina que explica por que você acorda às 3h da manhã..."
-                    </p>
+                    <button onclick="iniciarCheckout()" class="z-10 btn-checkout flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors shadow-lg hover:shadow-primary/50">
+                        <span class="truncate">Quero Dormir Melhor Agora</span>
+                    </button>
                 </div>
+            </div>
+        </section>
 
-                <h2 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">Para onde enviamos seu diagnóstico completo?</h2>
-                <p class="text-slate-500 dark:text-slate-400 mb-6 text-xs leading-relaxed">
-                    Insira seu melhor e-mail para desbloquear o **Plano de Ação** adequado para o seu perfil.
+        <section class="w-full py-16 lg:py-24 text-center">
+            <div class="max-w-3xl mx-auto px-4 flex flex-col items-center gap-4">
+                <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Você se revira na cama noite após noite?</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+                    Lutar contra a insônia é exaustivo. A falta de sono afeta sua energia, humor e produtividade.
+                    Mas o problema não é você, é o seu <strong>Sistema Nervoso</strong> que não sabe "desligar".
                 </p>
-                <input id="email-input" type="email" placeholder="Digite seu melhor e-mail aqui..." class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-4 focus:ring-blue-500/20 outline-none transition-all font-medium text-center">
-                <button onclick="finalizarLead()" id="btn-finalizar" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl hover:bg-blue-700 shadow-xl shadow-blue-500/20 transition-all flex justify-center items-center gap-3 text-lg group">
-                    LIBERAR MEU DIAGNÓSTICO <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">lock_open</span>
-                </button>
-                <div class="mt-6 flex items-center justify-center gap-4 opacity-50">
-                    <div class="flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm">shield</span>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">Dados Protegidos</span>
+            </div>
+        </section>
+
+        <section id="programa" class="w-full py-16 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white">O Protocolo Completo de Higiene do Sono</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4">Não é apenas um ebook. É um sistema multimídia de regulação biológica.</p>
+                </div>
+        
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full transition duration-500 group-hover:bg-primary/30"></div>
+                        <div class="relative rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                            <img src="mockup-bundle.png" 
+                                 alt="Kit Digital: App de Respiração + Manuais em PDF" 
+                                 class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
-                    <div class="w-px h-3 bg-slate-300"></div>
-                    <div class="flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm">bolt</span>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">Acesso Instantâneo</span>
+                    
+                    <div class="flex flex-col gap-8">
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary mt-1">
+                                <span class="material-symbols-outlined">play_circle</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Sessão Guiada Audiovisual (MP4)</h3>
+                                <div style="text-align: center; margin: 25px auto 35px auto;">
+                                    <img src="demoguia.gif" 
+                                         alt="Demonstração rápida da sessão guiada de respiração"
+                                         style="width: 100%; max-width: 450px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 1px solid #e0e0e0;">
+                                    <p style="font-size: 14px; color: #666; margin-top: 10px; font-style: italic;">
+                                        ⚡ Demonstração rápida (5s) do ritmo visual que acalma seu sistema nervoso.
+                                    </p>
+                                </div>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Um guia visual e sonoro calibrado que dita o ritmo exato de inspiração e expiração. Basta dar o play e seguir a bolha guia para indução ao sono.</p>
+                            </div>
+                        </div>
+        
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary mt-1">
+                                <span class="material-symbols-outlined">auto_stories</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Manual de Engenharia Respiratória</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Domine as 4 técnicas fundamentais: Diafragmática, Quadrada (Box Breathing), Alternada e a potente técnica 4-7-8 para crises de ansiedade.</p>
+                            </div>
+                        </div>
+        
+                        <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-primary mt-1">
+                                <span class="material-symbols-outlined">bed</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">O Guia do Sono Perfeito</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Entenda a arquitetura do sono (REM/NREM), regule seu Ritmo Circadiano e elimine os hábitos invisíveis que destroem sua melatonina.</p>
+                            </div>
+                        </div>
+                        
+                         <div class="flex gap-4 items-start">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 mt-1">
+                                <span class="material-symbols-outlined">medical_services</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Protocolo de Segurança Clínica</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Instruções precisas sobre postura, ambiente e contraindicações para garantir que sua prática seja 100% segura e livre de tonturas.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div id="screen-resultado" class="screen">
-        <div class="min-h-screen flex flex-col items-center justify-center p-4">
-             <div class="loading-spinner border-4 border-blue-200 border-t-blue-600 rounded-full w-12 h-12 animate-spin"></div>
+        <section id="ciencia" class="w-full py-16 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 text-center flex flex-col gap-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Por que seu cérebro <span class="text-primary">precisa</span> disso?</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    O sono não é apenas fechar os olhos. É uma complexa regulação hormonal que falha quando você está estressado. Nosso método atua diretamente na raiz fisiológica.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-4">
+                    <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-primary font-bold text-xl mb-2 flex items-center gap-2"><span class="material-symbols-outlined">psychology</span> Sistema Parassimpático</div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">A respiração diafragmática ativa este sistema, que funciona como um "freio natural" para o estresse, reduzindo a tensão muscular instantaneamente.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-primary font-bold text-xl mb-2 flex items-center gap-2"><span class="material-symbols-outlined">monitor_heart</span> Controle do Cortisol</div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Técnicas específicas reduzem os níveis de cortisol (hormônio do alerta), permitindo que seu corpo entre no estado de repouso necessário.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="text-primary font-bold text-xl mb-2 flex items-center gap-2"><span class="material-symbols-outlined">schedule</span> Ritmo Circadiano</div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Ajudamos a recalibrar seu "relógio biológico", ensinando seu corpo a reconhecer a hora exata de produzir melatonina e desligar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos" class="w-full py-16 bg-white dark:bg-background-dark">
+            <div class="max-w-5xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">Histórias de quem desligou a mente</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                            <span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4">"Eu sofria com a mente acelerada. A técnica 4-7-8 explicada no manual foi a única coisa que parou meus pensamentos obsessivos antes de dormir."</p>
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs text-slate-500">MC</div>
+                            Maria C.
+                        </div>
+                    </div>
+        
+                    <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                            <span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4">"O vídeo guiado é fantástico. Eu não preciso contar mentalmente, só sigo o ritmo da tela. Durmo antes do vídeo acabar."</p>
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs text-slate-500">JP</div>
+                            João P.
+                        </div>
+                    </div>
+        
+                    <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+                        <div class="flex items-center gap-1 text-yellow-500 mb-4">
+                            <span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span><span class="material-symbols-outlined text-sm">star</span>
+                        </div>
+                        <p class="text-slate-700 dark:text-slate-300 italic mb-4">"Acordava cansado todo dia. Depois que entendi os ciclos de sono e arrumei meu ambiente como o guia ensina, minha energia dobrou."</p>
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-xs text-slate-500">LS</div>
+                            Lucas S.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 lg:py-24 bg-slate-50 dark:bg-slate-900/30" id="oferta">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 lg:p-12 flex flex-col items-center text-center gap-8 border border-slate-200 dark:border-slate-700">
+                    <h2 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Sua jornada para noites tranquilas começa agora</h2>
+                    
+                    <div class="bg-primary/10 dark:bg-primary/20 text-primary font-bold py-2 px-6 rounded-full text-sm tracking-wide uppercase">Oferta Especial de Lançamento</div>
+                    
+                    <div class="flex flex-col items-center">
+                        <span class="text-slate-400 line-through text-lg">de R$ 97,00</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-2xl text-slate-600 font-bold">Por apenas</span>
+                            <p class="text-6xl font-black text-slate-900 dark:text-white tracking-tighter">R$ 34,49</p>
+                        </div>
+                        <span class="text-slate-500 text-sm mt-2">Menos de R$ 1,15 por dia. Acesso vitalício.</span>
+                    </div>
+
+                    <ul class="flex flex-col gap-4 text-left w-full max-w-sm mx-auto bg-slate-50 dark:bg-slate-900/50 p-6 rounded-xl">
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Acesso ao Vídeo Guiado</li>
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Ebook Engenharia Respiratória</li>
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Guia do Sono Perfeito</li>
+                        <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300"><span class="material-symbols-outlined text-green-500">check_circle</span>Atualizações Futuras Grátis</li>
+                    </ul>
+
+                    <button onclick="iniciarCheckout()" class="btn-checkout w-full max-w-sm flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 px-6 bg-green-600 text-white text-xl font-bold hover:bg-green-500 transition-all shadow-lg hover:shadow-green-500/30 transform hover:-translate-y-1">
+                        <span class="truncate">Quero Garantir Minha Vaga</span>
+                    </button>
+                    
+                    <div class="flex flex-col items-center gap-4 mt-2">
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+                            <span class="material-symbols-outlined text-xl text-primary">verified_user</span>
+                            <p class="font-bold">Garantia Incondicional de 7 dias</p>
+                        </div>
+                        <img src="https://img.shields.io/badge/Compra-Segura-green?style=flat&logo=lock" alt="Compra Segura" class="h-6 opacity-80">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full py-16 max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-10 text-slate-900 dark:text-white">Dúvidas Frequentes</h2>
+            <div class="space-y-4">
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        Preciso de algum equipamento?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">Não. Apenas seu celular ou tablet. Para uma experiência imersiva, recomendamos o uso de fones de ouvido durante a sessão guiada.</p>
+                </details>
+                
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        Quanto tempo leva a prática?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">O protocolo principal é projetado para ser feito já na cama e leva poucos minutos. As técnicas de emergência (4-7-8) podem ser feitas em 3 minutos a qualquer hora do dia.</p>
+                </details>
+                
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        E se eu tiver problemas de saúde?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">Nosso guia inclui um capítulo de "Cuidados e Segurança". Se sentir tonturas, orientamos a parar. Se tiver condições respiratórias prévias, consulte seu médico antes.</p>
+                </details>
+                
+                <details class="group bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer shadow-sm">
+                    <summary class="font-bold text-slate-900 dark:text-white list-none flex justify-between items-center text-lg">
+                        Como recebo o acesso?
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-slate-400">expand_more</span>
+                    </summary>
+                    <p class="text-slate-600 dark:text-slate-400 mt-4 leading-relaxed">Imediatamente após a aprovação do pagamento, você receberá um e-mail com o link para baixar todos os materiais (Vídeo e PDFs) diretamente no seu dispositivo.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full bg-slate-100 dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 py-8 text-center text-sm text-slate-500">
+            <p class="mb-2">© 2024 Respiração Profunda. Todos os direitos reservados.</p>
+            <p>Este produto não substitui o aconselhamento médico profissional.</p>
         </div>
-    </div>
+    </footer>
 </div>
 
 <script>
-    const questions = [
-        // SITUAÇÃO
-        { title: "Como você avalia a qualidade do seu sono na última semana?", options: [{l: "Excelente", v: 1, cat: "N"}, {l: "Regular", v: 2, cat: "M"}, {l: "Ruim", v: 4, cat: "C"}], name: "q1" },
-        { title: "Quanto tempo você leva para pegar no sono?", options: [{l: "Menos de 15 min", v: 1, cat: "N"}, {l: "Entre 15 e 45 min", v: 2, cat: "M"}, {l: "Mais de 1 hora", v: 3, cat: "C"}], name: "q2" },
-        { title: "Você acorda durante a madrugada?", options: [{l: "Nunca", v: 0, cat: "N"}, {l: "Às vezes", v: 2, cat: "M"}, {l: "Sempre", v: 4, cat: "M"}], name: "q3" },
-        { title: "Qual sensação define sua mente ao deitar?", options: [{l: "Tranquila", v: 1, cat: "N"}, {l: "Pensamentos aleatórios", v: 2, cat: "C"}, {l: "Preocupação/Ansiedade", v: 4, cat: "C"}], name: "q4" },
-        { title: "Você usa telas (celular/TV) na cama?", options: [{l: "Não", v: 0, cat: "N"}, {l: "Um pouco", v: 2, cat: "M"}, {l: "Sim, até dormir", v: 3, cat: "M"}], name: "q5" },
+    // --- LÓGICA DE PERSONALIZAÇÃO AVANÇADA (ARQUÉTIPOS) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const perfil = urlParams.get('perfil'); // Captura: alto, moderado ou baixo
         
-        // PROBLEMA
-        { title: "Você sente que sua memória ou foco falham durante o dia?", options: [{l: "Raramente", v: 1, cat: "N"}, {l: "Com frequência", v: 3, cat: "A"}, {l: "O tempo todo", v: 5, cat: "A"}], name: "q6" },
-        { title: "Com que frequência você sente irritabilidade sem motivo aparente?", options: [{l: "Quase nunca", v: 1, cat: "N"}, {l: "Algumas vezes", v: 3, cat: "C"}, {l: "Diariamente", v: 5, cat: "C"}], name: "q7" },
-        { title: "Você sente necessidade de cafeína para 'aguentar' o dia?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Moderadamente", v: 3, cat: "A"}, {l: "Sim, dependo disso", v: 5, cat: "A"}], name: "q8" },
-        { title: "Sua produtividade no trabalho caiu nos últimos meses?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Sinto que poderia render mais", v: 3, cat: "A"}, {l: "Sim, caiu drasticamente", v: 5, cat: "A"}], name: "q9" },
-        { title: "Você sente dores musculares ou tensão ao acordar?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Às vezes", v: 3, cat: "M"}, {l: "Sim, sinto o corpo pesado", v: 5, cat: "M"}], name: "q10" },
+        // Elementos Alvo
+        const titulo = document.getElementById('titulo-dinamico');
+        const subtitulo = document.getElementById('subtitulo-dinamico');
+        const heroSection = document.querySelector('section'); // Para mudar o background se quiser (opcional)
 
-        // IMPLICAÇÃO
-        { title: "Você teme que a falta de sono afete sua saúde a longo prazo?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Me preocupa um pouco", v: 4, cat: "C"}, {l: "É meu maior medo", v: 6, cat: "C"}], name: "q11" },
-        { title: "Como está sua paciência com as pessoas próximas?", options: [{l: "Normal", v: 1, cat: "N"}, {l: "Estou mais impaciente", v: 4, cat: "C"}, {l: "Sinto que estou me afastando", v: 6, cat: "C"}], name: "q12" },
-        { title: "Você sente que está 'envelhecendo' mais rápido por não dormir?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Sinto no meu rosto", v: 4, cat: "M"}, {l: "Sinto no meu vigor físico", v: 6, cat: "M"}], name: "q13" },
-        { title: "Quanto você já investiu em soluções que não funcionaram?", options: [{l: "Nada", v: 1, cat: "N"}, {l: "Algum valor", v: 4, cat: "A"}, {l: "Muito dinheiro e tempo", v: 6, cat: "A"}], name: "q14" },
-        { title: "Se nada mudar, como você estará daqui a 6 meses?", options: [{l: "Igual", v: 2, cat: "N"}, {l: "Pior", v: 5, cat: "A"}, {l: "Em colapso total", v: 7, cat: "A"}], name: "q15" },
-
-        // NECESSIDADE DE SOLUÇÃO
-        { title: "Qual a importância de resolver isso HOJE para você?", options: [{l: "Baixa", v: 1, cat: "N"}, {l: "Média", v: 4, cat: "N"}, {l: "Prioridade Máxima", v: 8, cat: "N"}], name: "q16" },
-        { title: "Você estaria disposto(a) a dedicar 15 min por dia para mudar isso?", options: [{l: "Talvez", v: 2, cat: "N"}, {l: "Sim", v: 5, cat: "N"}, {l: "Faria qualquer coisa", v: 8, cat: "N"}], name: "q17" },
-        { title: "Você prefere uma solução natural ou continuar com químicos?", options: [{l: "Tanto faz", v: 2, cat: "N"}, {l: "Prefiro natural", v: 5, cat: "N"}, {l: "Quero me livrar dos químicos", v: 8, cat: "N"}], name: "q18" },
-        { title: "Você acredita que merece voltar a ter noites de paz?", options: [{l: "Sim", v: 5, cat: "N"}, {l: "Com certeza", v: 8, cat: "N"}], name: "q19" },
-        { title: "Está pronto(a) para ver seu diagnóstico e o plano de ação?", options: [{l: "Sim, vamos lá", v: 5, cat: "N"}, {l: "Quero começar agora", v: 10, cat: "N"}], name: "q20" }
-    ];
-
-    let currentQ = 0;
-    let scores = { C: 0, M: 0, A: 0, total: 0 };
-
-    function navigateTo(id) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        if(id === 'quiz-1') {
-            renderQuestion();
-            document.getElementById('quiz-container').classList.add('active');
-        } else {
-            document.getElementById(`screen-${id}`).classList.add('active');
-        }
-        window.scrollTo(0,0);
-    }
-
-    function updateCheckpoint(pct) {
-        const textEl = document.getElementById('checkpoint-text');
-        if (pct >= 25 && pct < 50) textEl.innerText = "Padrões de estresse noturno detectados...";
-        else if (pct >= 50 && pct < 75) textEl.innerText = "Identificando falhas no ciclo químico...";
-        else if (pct >= 75 && pct < 95) textEl.innerText = "Cruzando dados com perfis neurofisiológicos...";
-        else if (pct >= 95) textEl.innerText = "Diagnóstico concluído com 98% de precisão!";
-    }
-
-    function renderQuestion() {
-        const q = questions[currentQ];
-        const pct = ((currentQ + 1) / questions.length) * 100;
-        document.getElementById('q-number').innerText = `Pergunta ${currentQ + 1} de ${questions.length}`;
-        document.getElementById('q-percent').innerText = `${Math.round(pct)}%`;
-        document.getElementById('q-bar').style.width = `${pct}%`;
-        updateCheckpoint(pct);
-        const titleEl = document.getElementById('q-title');
-        titleEl.innerText = q.title;
-        const container = document.getElementById('q-options');
-        container.innerHTML = '';
-        q.options.forEach(opt => {
-            const div = document.createElement('div');
-            div.innerHTML = `
-                <label class="flex items-center gap-4 p-5 border-2 rounded-xl cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-all border-slate-100 dark:border-slate-800 dark:hover:bg-slate-800 bg-white dark:bg-slate-900 group">
-                    <div class="w-6 h-6 rounded-full border-2 border-slate-300 group-hover:border-blue-500 flex items-center justify-center">
-                        <div class="w-3 h-3 rounded-full bg-blue-500 opacity-0 transition-opacity check-circle"></div>
-                    </div>
-                    <input type="radio" name="quiz_opt" value="${opt.v}" data-cat="${opt.cat}" class="hidden" onchange="selectOption(this)">
-                    <span class="font-semibold text-lg text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-white">${opt.l}</span>
-                </label>
-            `;
-            container.appendChild(div);
-        });
-    }
-
-    function selectOption(input) {
-        document.querySelectorAll('.check-circle').forEach(el => el.classList.remove('opacity-100'));
-        document.querySelectorAll('label').forEach(el => el.classList.remove('border-blue-500', 'bg-blue-50'));
-        const label = input.closest('label');
-        label.classList.add('border-blue-500', 'bg-blue-50');
-        label.querySelector('.check-circle').classList.add('opacity-100');
-        setTimeout(() => nextQuestion(), 400);
-    }
-
-    function nextQuestion() {
-        const selected = document.querySelector('input[name="quiz_opt"]:checked');
-        if(!selected) return;
-        const val = parseInt(selected.value);
-        const cat = selected.getAttribute('data-cat');
-        if(cat !== 'N') scores[cat] += val;
-        scores.total += val;
-        currentQ++;
-        if(currentQ < questions.length) renderQuestion();
-        else { navigateTo('calculando'); iniciarPseudoCalculo(); }
-    }
-
-    function iniciarPseudoCalculo() {
-        const textos = ["Analisando picos de cortisol...", "Avaliando adenosina...", "Detectando falhas circadiana...", "Identificando arquétipo...", "Mapeado!"];
-        const textoEl = document.getElementById('analise-texto');
-        let i = 0;
-        const interval = setInterval(() => {
-            if(i < textos.length) { textoEl.innerText = textos[i]; i++; }
-            else { clearInterval(interval); definirArquétipo(); navigateTo('captura'); }
-        }, 800);
-    }
-
-    let finalArchetype = { name: "", desc: "", slug: "" };
-
-    function definirArquétipo() {
-        const { C, M, A } = scores;
-        if (C >= M && C >= A) {
-            finalArchetype = { 
-                name: "O Hipervigilante (Cortisol)", 
-                desc: "Sua mente não desliga. O 'spoiler' do seu diagnóstico indica um excesso de cortisol noturno que mantém seu cérebro em alerta máximo, impedindo a entrada no sono profundo.",
-                slug: "hipervigilante"
-            };
-        } else if (M >= C && M >= A) {
-            finalArchetype = { 
-                name: "O Fragmentado (Melatonina)", 
-                desc: "Seu ciclo circadiano está quebrado. O diagnóstico preliminar aponta que seu corpo interrompe a produção de melatonina precocemente, causando os despertares noturnos.",
-                slug: "fragmentado"
-            };
-        } else {
-            finalArchetype = { 
-                name: "O Exausto Químico (Adenosina)", 
-                desc: "Seu sistema de pressão de sono está falhando. Identificamos uma resistência à adenosina, o que explica por que você se sente exausto mas não consegue descansar.",
-                slug: "exausto"
-            };
-        }
-        document.getElementById('archetype-name').innerText = finalArchetype.name;
-        document.getElementById('archetype-desc').innerText = `"${finalArchetype.desc}"`;
-    }
-
-    async function finalizarLead() {
-        const email = document.getElementById('email-input').value;
-        const btn = document.getElementById('btn-finalizar');
-        
-        if(!email.includes('@') || !email.includes('.')) return alert("Por favor, insira um e-mail válido.");
-
-        // UI Loading
-        btn.innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> LIBERANDO ACESSO...`;
-        btn.disabled = true;
-
-        // --- LÓGICA DE TRADUÇÃO (ARQUÉTIPO -> NÍVEL) ---
-        // Aqui transformamos a pontuação complexa em "baixo", "moderado", "alto"
-        // para conversar com seu Google Script e Página de Vendas.
-        
-        let perfilBackend;
-        const totalScore = scores.total;
-
-        // Calibragem para 20 perguntas (Pontuação Máxima ~120)
-        if (totalScore >= 75) {
-            perfilBackend = "alto";      // Caso Crítico
-        } else if (totalScore >= 45) {
-            perfilBackend = "moderado";  // Caso Médio
-        } else {
-            perfilBackend = "baixo";     // Caso Leve
-        }
-
-        const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxZ8UyyZ57aMR6O2o2O0jf61DS5nT-a5UdcxqueL0Blpz5FAgVf5JCMoamIjwAgOaV7/exec";
-
-        try {
-            await fetch(URL_PLANILHA, {
-                method: 'POST',
-                mode: 'no-cors', 
-                cache: 'no-cache',
-                headers: { 'Content-Type': 'application/json' },
-                // Enviamos 'perfil' como o backend espera (alto/moderado/baixo)
-                // Mas também enviamos o 'arquetipo' visual caso você queira salvar na planilha para consulta futura
-                body: JSON.stringify({ 
-                    email: email, 
-                    score: totalScore, 
-                    perfil: perfilBackend, 
-                    arquetipo: finalArchetype.name // Opcional: Salva qual foi o arquétipo visual
-                })
-            });
+        if (perfil && titulo && subtitulo) {
             
-            // Redireciona para a página de vendas usando a slug correta (alto, moderado, baixo)
-            setTimeout(() => { 
-                window.location.href = `vendas.html?perfil=${perfilBackend}`; 
-            }, 500);
-
-        } catch (error) {
-            console.error(error);
-            // Fallback de segurança
-            window.location.href = `vendas.html?perfil=${perfilBackend}`;
+            // PERFIL 1: O HIPERVIGILANTE (Alto Score / Cortisol)
+            // Foco: Ansiedade, mente que não para, demora a dormir.
+            if (perfil === 'alto') {
+                titulo.innerHTML = "Protocolo <span class='text-primary'>Anti-Cortisol</span> para o Perfil Hipervigilante";
+                subtitulo.innerHTML = "Seu diagnóstico confirmou: <strong class='text-white'>excesso de alerta noturno</strong>. Descubra como baixar a guarda do seu sistema nervoso e apagar em 15 minutos.";
+            } 
+            
+            // PERFIL 2: O FRAGMENTADO (Médio Score / Melatonina)
+            // Foco: Acorda no meio da noite, sono picado.
+            else if (perfil === 'moderado') {
+                titulo.innerHTML = "Reparo do <span class='text-primary'>Ciclo da Melatonina</span> (Perfil Fragmentado)";
+                subtitulo.innerHTML = "Você não precisa mais acordar às 3h da manhã. A técnica para blindar seu sono e impedir que a química do despertar ative antes da hora.";
+            } 
+            
+            // PERFIL 3: O EXAUSTO QUÍMICO (Baixo Score / Adenosina)
+            // Foco: Dorme mas acorda cansado, falta de energia profunda.
+            else if (perfil === 'baixo') {
+                titulo.innerHTML = "Reset da <span class='text-primary'>Adenosina</span>: O Fim do Cansaço Crônico";
+                subtitulo.innerHTML = "Seu corpo esqueceu como recarregar. Use a engenharia respiratória para limpar as toxinas neurais e acordar com energia total.";
+            }
+            
+            // TRACKING PRECISO NO FACEBOOK ADS
+            // Isso permite que você crie públicos de Remarketing específicos depois
+            // Ex: "Público que viu página de Cortisol mas não comprou"
+            if(typeof fbq === 'function') {
+                fbq('track', 'ViewContent', { 
+                    content_name: 'SalesPage', 
+                    content_category: perfil, // 'alto', 'moderado', 'baixo'
+                    content_type: 'product'
+                });
+            }
         }
+    });
+
+    // CHECKOUT SEGURO
+    function iniciarCheckout() {
+        if(typeof fbq === 'function') {
+            fbq('track', 'InitiateCheckout');
+        }
+        setTimeout(function() {
+            window.location.href = "https://lastlink.com/p/CDB7C9EA2/checkout-payment/";
+        }, 300);
     }
 </script>
 </body>
