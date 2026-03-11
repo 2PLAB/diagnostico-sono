@@ -33,29 +33,29 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
     /></noscript>
-    </head>
+</head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
 
 <div id="app">
     <div id="screen-inicio" class="screen active">
         <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12 text-center">
-            <div class="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-full mb-6 border border-blue-100 dark:border-blue-800">
+            <div class="inline-flex items-center gap-2 bg-red-50 dark:bg-red-900/20 px-4 py-2 rounded-full mb-6 border border-red-100 dark:border-red-800">
                 <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                 </span>
-                <span class="text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-widest">Apenas 47 vagas de diagnóstico hoje</span>
+                <span class="text-red-700 dark:text-red-400 text-xs font-bold uppercase tracking-widest">Apenas 47 vagas de diagnóstico hoje</span>
             </div>
-            <div class="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full mb-6">
-                <span class="material-symbols-outlined text-5xl text-blue-600">psychology</span>
+            <div class="bg-red-100 dark:bg-red-900/30 p-4 rounded-full mb-6">
+                <span class="material-symbols-outlined text-5xl text-red-600">psychology</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-6 max-w-4xl text-slate-900 dark:text-white leading-tight">
                 Seu cérebro não desliga à noite?
             </h1>
             <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Inicie seu <strong>Diagnóstico Neurofisiológico</strong> para identificar qual dos 3 desequilíbrios químicos está impedindo seu sono profundo.
+                Inicie seu <strong>Diagnóstico Neurofisiológico</strong> e descubra em 60 segundos qual desequilíbrio está prendendo sua mente em um estado de "alerta constante".
             </p>
-            <button onclick="navigateTo('quiz-1')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all text-lg">
+            <button onclick="navigateTo('quiz-1')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg hover:shadow-red-500/30 hover:scale-105 transition-all text-lg">
                 Iniciar Diagnóstico Gratuito
             </button>
             <p class="mt-4 text-xs text-slate-400 uppercase tracking-widest font-semibold">Protocolo Baseado em Neurociência Aplicada</p>
@@ -67,15 +67,15 @@
             <div class="w-full max-w-xl bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 relative">
                 <div id="quiz-progress" class="mb-8">
                     <div class="flex justify-between mb-2 text-xs font-bold uppercase text-slate-400">
-                        <span id="q-number">Pergunta 1 de 23</span>
-                        <span id="q-percent">4%</span>
+                        <span id="q-number">Pergunta 1 de 7</span>
+                        <span id="q-percent">14%</span>
                     </div>
                     <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-3">
-                        <div id="q-bar" class="h-full bg-blue-600 rounded-full transition-all duration-500" style="width: 4%"></div>
+                        <div id="q-bar" class="h-full bg-red-600 rounded-full transition-all duration-500" style="width: 14%"></div>
                     </div>
-                    <div id="q-checkpoint" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tighter text-blue-600 dark:text-blue-400">
+                    <div id="q-checkpoint" class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tighter text-red-600 dark:text-red-400">
                         <span class="material-symbols-outlined text-sm animate-pulse">analytics</span>
-                        <span id="checkpoint-text">Iniciando análise demográfica...</span>
+                        <span id="checkpoint-text">Iniciando mapeamento...</span>
                     </div>
                 </div>
                 
@@ -85,17 +85,17 @@
                 </div>
 
                 <div id="dynamic-feedback" class="hidden absolute inset-0 bg-white/95 dark:bg-slate-900/95 z-10 flex flex-col items-center justify-center p-8 rounded-2xl text-center feedback-bubble">
-                    <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-full mb-4">
-                        <span class="material-symbols-outlined text-3xl text-blue-600 animate-bounce">insights</span>
+                    <div class="bg-red-50 dark:bg-red-900/30 p-4 rounded-full mb-4">
+                        <span class="material-symbols-outlined text-3xl text-red-600 animate-bounce">insights</span>
                     </div>
                     <p id="feedback-text" class="text-lg font-semibold text-slate-800 dark:text-slate-200 leading-relaxed italic"></p>
-                    <div class="mt-6 flex items-center gap-2 text-blue-600 text-[10px] font-black uppercase tracking-widest">
+                    <div class="mt-6 flex items-center gap-2 text-red-600 text-[10px] font-black uppercase tracking-widest">
                         <span>Processando dados</span>
                         <span class="flex gap-1"><span class="animate-bounce">.</span><span class="animate-bounce" style="animation-delay: 0.2s">.</span><span class="animate-bounce" style="animation-delay: 0.4s">.</span></span>
                     </div>
                 </div>
 
-                <button id="btn-next" onclick="nextQuestion()" class="mt-8 w-full bg-slate-900 dark:bg-blue-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors">
+                <button id="btn-next" onclick="nextQuestion()" class="mt-8 w-full bg-red-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-red-700 transition-colors shadow-lg hover:shadow-red-500/30">
                     Próxima Etapa <span class="material-symbols-outlined">arrow_forward</span>
                 </button>
             </div>
@@ -105,11 +105,11 @@
     <div id="screen-calculando" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
             <div class="mb-8">
-                <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
             </div>
             <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Processando Perfil Neurofisiológico...</h2>
             <div class="w-full max-w-xs h-4 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-4 mx-auto">
-                <div class="h-full bg-blue-600 fake-load-bar"></div>
+                <div class="h-full bg-red-600 fake-load-bar"></div>
             </div>
             <div id="analise-texto" class="text-slate-500 text-sm font-medium">Cruzando padrões de cortisol e melatonina...</div>
         </div>
@@ -117,108 +117,108 @@
 
     <div id="screen-captura" class="screen">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-            <div class="w-full max-w-md bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-2xl border border-blue-100 dark:border-slate-800">
+            <div class="w-full max-w-md bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-2xl border border-red-100 dark:border-red-900/30 relative overflow-hidden">
                 <div class="mb-6">
-                    <span class="bg-blue-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Relatório Gerado com Sucesso</span>
+                    <span class="bg-red-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm animate-pulse">Diagnóstico Concluído</span>
                 </div>
                 
-                <div id="archetype-spoiler" class="mb-8 p-6 bg-blue-50/50 dark:bg-blue-900/20 rounded-2xl border-2 border-blue-100 dark:border-blue-800/50 relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 opacity-10">
-                        <span class="material-symbols-outlined text-8xl">verified</span>
+                <div id="archetype-spoiler" class="mb-8 p-6 bg-slate-50 dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 relative">
+                    <div class="absolute -right-4 -top-4 opacity-5">
+                        <span class="material-symbols-outlined text-8xl">warning</span>
                     </div>
-                    <p class="text-[10px] text-blue-600 dark:text-blue-400 uppercase font-black tracking-widest mb-3">Seu Perfil Biológico:</p>
+                    <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-3">O seu Perfil Biológico:</p>
                     <h3 id="archetype-name" class="text-2xl font-black text-slate-900 dark:text-white mb-3">Calculando...</h3>
-                    <div class="h-px w-12 bg-blue-200 mx-auto mb-3"></div>
+                    <div class="h-px w-12 bg-red-600 mx-auto mb-3"></div>
                     <p id="archetype-desc" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
-                        "Detectamos uma anomalia na sua produção de melatonina que explica por que você acorda às 3h da manhã..."
+                        "Detectámos uma anomalia neurofisiológica..."
                     </p>
                 </div>
 
-                <h2 class="text-xl font-bold mb-4 text-slate-900 dark:text-white">Para onde enviamos seu diagnóstico completo?</h2>
-                <p class="text-slate-500 dark:text-slate-400 mb-6 text-xs leading-relaxed">
-                    Insira seu melhor e-mail para receber seu **Score detalhado** e o acesso imediato à sua **Prescrição Personalizada**.
+                <h2 class="text-xl font-black mb-4 text-slate-900 dark:text-white">Para onde enviamos a cópia do seu resultado?</h2>
+                <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Para sua segurança e consulta futura, insira o seu melhor e-mail abaixo. Você receberá seu diagnóstico e o acesso imediato ao Botão de Desligar do Cérebro para desativar o alerta da sua mente hoje mesmo.
                 </p>
-                <input id="email-input" type="email" placeholder="Digite seu melhor e-mail aqui..." class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-4 focus:ring-blue-500/20 outline-none transition-all font-medium text-center">
-                <button onclick="finalizarLead()" id="btn-finalizar" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl hover:bg-blue-700 shadow-xl shadow-blue-500/20 transition-all flex justify-center items-center gap-3 text-lg group">
-                    VER MEU SCORE E PRESCRIÇÃO <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                <input id="email-input" type="email" placeholder="Digite o seu melhor e-mail aqui..." class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-4 focus:ring-red-500/20 outline-none transition-all font-medium text-center">
+                <button onclick="finalizarLead()" id="btn-finalizar" class="w-full bg-red-600 text-white font-black py-5 rounded-xl hover:bg-red-700 shadow-xl shadow-red-500/20 transition-all flex justify-center items-center gap-3 text-lg group">
+                    VER MEU RESULTADO AGORA <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </button>
+                <p class="mt-4 text-[10px] text-slate-400 uppercase tracking-widest">Nós odiamos spam tanto quanto você.</p>
             </div>
-        </div>
-    </div>
-
-    <div id="screen-resultado" class="screen">
-        <div class="min-h-screen flex flex-col items-center justify-center p-4">
-             <div class="loading-spinner border-4 border-blue-200 border-t-blue-600 rounded-full w-12 h-12 animate-spin"></div>
         </div>
     </div>
 </div>
 
 <script>
+    // ARRAY REDUZIDO: 7 Perguntas focadas no Método ASK
     const questions = [
-        // DEMOGRÁFICAS (Engajamento Inicial)
-        { title: "Qual é o seu gênero?", options: [{l: "Feminino", v: 0, cat: "D"}, {l: "Masculino", v: 0, cat: "D"}], name: "genero" },
-        { title: "Qual é a sua faixa etária?", options: [{l: "Menos de 25 anos", v: 0, cat: "D"}, {l: "25 a 45 anos", v: 0, cat: "D"}, {l: "Mais de 45 anos", v: 0, cat: "D"}], name: "idade" },
-        { title: "Você possui filhos ou pessoas sob sua responsabilidade?", options: [{l: "Sim", v: 0, cat: "D"}, {l: "Não", v: 0, cat: "D"}], name: "filhos" },
-
-        // SITUAÇÃO (A Dor Visceral)
-        { title: "Como você se sente nas primeiras horas da manhã?", options: [{l: "Acordo renovado", v: 1, cat: "N"}, {l: "Arrastado e cansado", v: 2, cat: "M"}, {l: "Acordo parecendo um 'zumbi' ou um lixo", v: 4, cat: "C"}], name: "q1" },
-        { title: "Você tem a sensação de que seu cérebro 'luta' contra você na hora de deitar?", options: [{l: "Não, durmo rápido", v: 1, cat: "N"}, {l: "Às vezes", v: 2, cat: "M"}, {l: "Sim, é uma batalha toda noite", v: 3, cat: "C"}], name: "q2" },
-        { title: "Quando você acorda de madrugada, o que mais te desespera?", options: [{l: "Não acordo de madrugada", v: 0, cat: "N"}, {l: "A dificuldade de voltar a dormir", v: 2, cat: "M"}, {l: "O silêncio e a mente que não cala a boca", v: 4, cat: "M"}], name: "q3" },
-        { title: "O que acontece na sua cabeça quando você encosta no travesseiro?", options: [{l: "Fica tranquila", v: 1, cat: "N"}, {l: "Pensamentos aleatórios", v: 2, cat: "C"}, {l: "Um turbilhão de ansiedade e preocupações", v: 4, cat: "C"}], name: "q4" },
-        { title: "Você tenta usar o celular ou a TV para 'forçar' o cérebro a desligar?", options: [{l: "Não", v: 0, cat: "N"}, {l: "Um pouco", v: 2, cat: "M"}, {l: "Sim, rolo a tela até o olho fechar de cansaço", v: 3, cat: "M"}], name: "q5" },
+        // 1. ENGAGEMENT (Quebrar o gelo)
+        { title: "Como você descreveria suas manhãs ultimamente?", options: [
+            {l: "Acordo cansado, mas funciono", v: 1, cat: "N"}, 
+            {l: "Arrastado, precisando de muito café", v: 2, cat: "M"}, 
+            {l: "Acordo parecendo um 'zumbi' atropelado", v: 4, cat: "A"}
+        ], name: "q1" },
         
-        // PROBLEMA (O Efeito Zumbi no Dia a Dia)
-        { title: "Você sente uma 'névoa mental' ou parece esquecer coisas simples durante o dia?", options: [{l: "Raramente", v: 1, cat: "N"}, {l: "Com frequência", v: 3, cat: "A"}, {l: "O tempo todo, pareço anestesiado", v: 5, cat: "A"}], name: "q6" },
-        { title: "A exaustão tem feito você explodir por motivos bobos (nervos à flor da pele)?", options: [{l: "Quase nunca", v: 1, cat: "N"}, {l: "Algumas vezes", v: 3, cat: "C"}, {l: "Diariamente, a irritação me consome", v: 5, cat: "C"}], name: "q7" },
-        { title: "Você sente que só 'sobrevive' ao dia à base de muito café ou energéticos?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Moderadamente", v: 3, cat: "A"}, {l: "Sim, dependo disso para funcionar", v: 5, cat: "A"}], name: "q8" },
-        { title: "Você sente que a falta de sono está roubando sua vontade de viver e realizar seus sonhos?", options: [{l: "Não, sigo normal", v: 1, cat: "N"}, {l: "Sinto que estou estagnado", v: 3, cat: "A"}, {l: "Sim, a vida está apenas passando por mim", v: 5, cat: "A"}], name: "q9" },
-        { title: "Você acorda com a sensação física de ter sido 'atropelado por um caminhão'?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Às vezes", v: 3, cat: "M"}, {l: "Sim, o corpo pesa e dói todo dia", v: 5, cat: "M"}], name: "q10" },
+        // 2. THE DECIDER (A pergunta de segmentação)
+        { title: "Qual é o seu MAIOR obstáculo com o sono hoje?", options: [
+            {l: "Minha mente não desliga ao encostar no travesseiro", v: 6, cat: "C"}, 
+            {l: "Acordo de madrugada e não consigo voltar a dormir", v: 6, cat: "M"}, 
+            {l: "Até durmo, mas o sono não recarrega minhas baterias", v: 6, cat: "A"}
+        ], name: "q2" },
 
-        // IMPLICAÇÃO (O Custo Oculto e o Medo)
-        { title: "Você teme que seu corpo ou coração 'pifem' de vez por causa dessa exaustão?", options: [{l: "Não penso nisso", v: 1, cat: "N"}, {l: "Me preocupa um pouco", v: 4, cat: "C"}, {l: "É o meu maior medo atual", v: 6, cat: "C"}], name: "q11" },
-        { title: "Como a falta de energia afeta sua relação com sua família e filhos?", options: [{l: "Não afeta", v: 1, cat: "N"}, {l: "Fico com menos paciência", v: 4, cat: "C"}, {l: "Sinto muita culpa por não estar presente", v: 6, cat: "C"}], name: "q12" },
-        { title: "Você se olha no espelho e sente que envelheceu anos em poucos meses?", options: [{l: "Não", v: 1, cat: "N"}, {l: "Sinto no meu rosto (olheiras marcadas)", v: 4, cat: "M"}, {l: "Sinto no meu vigor físico despencando", v: 6, cat: "M"}], name: "q13" },
-        { title: "O que você mais odeia nos remédios para dormir (química)?", options: [{l: "Não uso remédios", v: 1, cat: "N"}, {l: "O medo do vício e da dependência", v: 4, cat: "A"}, {l: "A ressaca química e sentir o cérebro 'fritado'", v: 6, cat: "A"}], name: "q14" },
-        { title: "Se você continuar dormindo assim, como estará sua vida daqui a 6 meses?", options: [{l: "Igual", v: 2, cat: "N"}, {l: "Pior", v: 5, cat: "A"}, {l: "Em colapso total", v: 7, cat: "A"}], name: "q15" },
+        // 3. CONTEXT (Dor Visceral / Validação)
+        { title: "O que acontece na sua cabeça quando você finalmente deita?", options: [
+            {l: "Fica relativamente tranquila", v: 1, cat: "N"}, 
+            {l: "Começo a repassar problemas e pendências", v: 3, cat: "C"}, 
+            {l: "Bate uma ansiedade e um 'alerta máximo' autônomo", v: 5, cat: "C"}
+        ], name: "q3" },
 
-        // NECESSIDADE DE SOLUÇÃO (Preparação para a Oferta)
-        { title: "O quanto você precisa encontrar o 'botão de desligar' da sua mente HOJE?", options: [{l: "É apenas curiosidade", v: 1, cat: "N"}, {l: "Seria bom resolver", v: 4, cat: "N"}, {l: "É uma questão de sobrevivência urgente", v: 8, cat: "N"}], name: "q16" },
-        { title: "Você estaria disposto(a) a dedicar 15 minutos de um ritual para aprender a apagar a mente?", options: [{l: "Talvez", v: 2, cat: "N"}, {l: "Sim", v: 5, cat: "N"}, {l: "Faria qualquer coisa para dormir em paz", v: 8, cat: "N"}], name: "q17" },
-        { title: "O que você prefere para as suas próximas noites de sono?", options: [{l: "Qualquer coisa que me faça apagar", v: 2, cat: "N"}, {l: "Uma solução natural e guiada", v: 5, cat: "N"}, {l: "Me livrar da dependência química urgente", v: 8, cat: "N"}], name: "q18" },
-        { title: "Você acredita que merece voltar a ter noites de paz e acordar revigorado(a)?", options: [{l: "Sim", v: 5, cat: "N"}, {l: "Com certeza absoluta", v: 8, cat: "N"}], name: "q19" },
-        { title: "Está pronto(a) para descobrir qual o seu perfil de sono e o seu plano de ação?", options: [{l: "Sim, vamos lá", v: 5, cat: "N"}, {l: "Quero começar agora mesmo", v: 10, cat: "N"}], name: "q20" }
+        // 4. CONTEXT (Combate à crença / Higiene do sono)
+        { title: "Você já tentou coisas como apagar a luz azul, meditar ou tomar chás... e sentiu que foi inútil?", options: [
+            {l: "Nunca tentei", v: 1, cat: "N"}, 
+            {l: "Funcionou um pouco no começo", v: 2, cat: "M"}, 
+            {l: "Sim, tentar forçar o sono só me deixa com mais raiva", v: 5, cat: "C"}
+        ], name: "q4" },
+        
+        // 5. CONTEXT (Impacto na vida)
+        { title: "Como a exaustão está afetando o seu dia a dia?", options: [
+            {l: "Tira meu foco no trabalho", v: 3, cat: "A"}, 
+            {l: "Estou perdendo a paciência com minha família", v: 5, cat: "C"}, 
+            {l: "Sinto que a vida está apenas 'passando' por mim", v: 5, cat: "A"}
+        ], name: "q5" },
+
+        // 6. CURIOSITY (Quebra de padrão)
+        { title: "Você sabia que a obsessão por 'dormir 8 horas' é exatamente o que dispara o estresse do seu cérebro?", options: [
+            {l: "Não fazia ideia", v: 3, cat: "N"}, 
+            {l: "Faz sentido, fico ansioso só de olhar pro relógio", v: 5, cat: "C"}
+        ], name: "q6" },
+
+        // 7. TRANSITION (Micro-compromisso final)
+        { title: "Se houvesse um mecanismo mecânico de 15 minutos para desarmar o 'alerta' da sua mente sem usar pílulas, você aplicaria hoje?", options: [
+            {l: "Com certeza absoluta", v: 10, cat: "N"}, 
+            {l: "Eu faria qualquer coisa para dormir em paz", v: 10, cat: "N"}
+        ], name: "q7" }
     ];
 
     const feedbacks = {
-        D: [
-            "Excelente. Ajustando os parâmetros demográficos...",
-            "Perfeito. Cruzando dados com seu perfil biológico...",
-            "Entendido. Isso ajuda a calibrar a precisão do diagnóstico.",
-            "Dados demográficos registrados. Vamos para a análise do seu padrão de sono."
-        ],
         C: [
-            "Detectamos um pico de cortisol noturno. É por isso que você sente sua mente 'lutando' contra o sono...",
-            "Sua mente parece estar em um estado de 'Alerta Oculto' constante, impedindo o relaxamento profundo.",
-            "Essa hiperatividade cerebral é exatamente o que sabota seu sono REM toda noite.",
-            "Seus níveis de estresse noturno explicam perfeitamente essa exaustão mental ao longo do dia."
+            "Detectamos um pico de cortisol noturno. Sua mente está em 'Alerta Oculto'...",
+            "Seu cérebro límbico assumiu o controle. Isso bloqueia a inconsciência profunda.",
+            "Essa hiperatividade cerebral sabota o seu sono REM propositalmente."
         ],
         M: [
-            "Sua produção de melatonina parece estar sendo 'quebrada' ou interrompida.",
-            "Este despertar sugere que seu relógio biológico perdeu a sincronia natural.",
-            "Seu corpo literalmente 'esquece' como sustentar o sono pesado.",
-            "Essa quebra de ritmo explica a sensação de ser 'atropelado' pela manhã."
+            "Sua produção de melatonina precoce parece estar sofrendo quebras.",
+            "Esse despertar de madrugada sugere uma falha de sincronia circadiana.",
+            "Seu corpo literalmente 'esquece' de sustentar o sono pesado."
         ],
         A: [
-            "Sua pressão de sono natural (adenosina) está sendo mascarada.",
-            "Isso explica a 'névoa mental' e a sensação de estar sempre como um zumbi.",
-            "Seu sistema nervoso está fadigado, lutando para recarregar sem ajuda.",
-            "Identificamos uma resistência profunda ao descanso. Seu corpo clama por um alívio natural."
+            "Sua pressão natural de sono (adenosina) está mascarada.",
+            "Isso explica a 'névoa mental' e a sensação de exaustão química.",
+            "Seu sistema nervoso simpático está fadigado ao extremo."
         ],
         N: [
-            "Processando seu relato...",
-            "Mapeando seus padrões de exaustão...",
-            "Cruzando informações com nosso banco de dados...",
-            "Analisando o impacto desse hábito no seu sistema nervoso..."
+            "Processando seu relato comportamental...",
+            "Cruzando essas informações com nosso banco de neurofisiologia...",
+            "Analisando o impacto desse padrão no seu sistema nervoso..."
         ]
     };
 
@@ -238,11 +238,10 @@
 
     function updateCheckpoint(pct) {
         const textEl = document.getElementById('checkpoint-text');
-        if (pct < 15) textEl.innerText = "Iniciando análise demográfica...";
-        else if (pct >= 15 && pct < 40) textEl.innerText = "Padrões de estresse noturno detectados...";
-        else if (pct >= 40 && pct < 70) textEl.innerText = "Identificando falhas no ciclo químico...";
-        else if (pct >= 70 && pct < 95) textEl.innerText = "Cruzando dados com perfis neurofisiológicos...";
-        else if (pct >= 95) textEl.innerText = "Análise concluída com sucesso!";
+        if (pct < 25) textEl.innerText = "Iniciando mapeamento comportamental...";
+        else if (pct >= 25 && pct < 50) textEl.innerText = "Padrões de estresse noturno detectados...";
+        else if (pct >= 50 && pct < 80) textEl.innerText = "Identificando falhas no ciclo químico...";
+        else if (pct >= 80) textEl.innerText = "Preparando cruzamento de dados finais...";
     }
 
     function renderQuestion() {
@@ -258,12 +257,12 @@
         q.options.forEach(opt => {
             const div = document.createElement('div');
             div.innerHTML = `
-                <label class="flex items-center gap-4 p-5 border-2 rounded-xl cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-all border-slate-100 dark:border-slate-800 dark:hover:bg-slate-800 bg-white dark:bg-slate-900 group">
-                    <div class="w-6 h-6 rounded-full border-2 border-slate-300 group-hover:border-blue-500 flex items-center justify-center">
-                        <div class="w-3 h-3 rounded-full bg-blue-500 opacity-0 transition-opacity check-circle"></div>
+                <label class="flex items-center gap-4 p-5 border-2 rounded-xl cursor-pointer hover:bg-red-50 hover:border-red-200 transition-all border-slate-100 dark:border-slate-800 dark:hover:bg-slate-800 bg-white dark:bg-slate-900 group">
+                    <div class="w-6 h-6 rounded-full border-2 border-slate-300 group-hover:border-red-500 flex items-center justify-center">
+                        <div class="w-3 h-3 rounded-full bg-red-500 opacity-0 transition-opacity check-circle"></div>
                     </div>
                     <input type="radio" name="quiz_opt" value="${opt.v}" data-cat="${opt.cat}" data-label="${opt.l}" class="hidden" onchange="selectOption(this)">
-                    <span class="font-semibold text-lg text-slate-700 dark:text-slate-300 group-hover:text-blue-700 dark:group-hover:text-white">${opt.l}</span>
+                    <span class="font-semibold text-lg text-slate-700 dark:text-slate-300 group-hover:text-red-700 dark:group-hover:text-white">${opt.l}</span>
                 </label>
             `;
             container.appendChild(div);
@@ -273,13 +272,13 @@
     function selectOption(input) {
         const label = input.closest('label');
         label.querySelector('.check-circle').classList.add('opacity-100');
-        label.classList.add('border-blue-500', 'bg-blue-50');
+        label.classList.add('border-red-500', 'bg-red-50');
         
         const cat = input.getAttribute('data-cat');
         const msgList = feedbacks[cat] || feedbacks.N;
         const randomMsg = msgList[Math.floor(Math.random() * msgList.length)];
         
-        // MOSTRAR FEEDBACK DINÂMICO
+        // Feedback dinâmico
         const feedbackEl = document.getElementById('dynamic-feedback');
         document.getElementById('feedback-text').innerText = randomMsg;
         feedbackEl.classList.remove('hidden');
@@ -306,29 +305,28 @@
     }
 
     function iniciarPseudoCalculo() {
-        const textos = ["Cruzando parâmetros demográficos...", "Analisando picos de cortisol...", "Avaliando adenosina...", "Mapeando perfil final..."];
+        const textos = ["Mapeando respostas...", "Analisando níveis teóricos de cortisol...", "Verificando pressão de adenosina...", "Montando relatório clínico..."];
         const textoEl = document.getElementById('analise-texto');
         let i = 0;
         const interval = setInterval(() => {
             if(i < textos.length) { textoEl.innerText = textos[i]; i++; }
             else { clearInterval(interval); definirArquétipo(); navigateTo('captura'); }
-        }, 800);
+        }, 1000);
     }
 
     let finalArchetype = { name: "", desc: "", slug: "" };
 
     function definirArquétipo() {
-        const { total } = scores;
-        // OBRIGATÓRIO: baixo, moderado ou alto
-        let perfilSlug = total >= 80 ? "alto" : (total >= 50 ? "moderado" : "baixo");
         const { C, M, A } = scores;
+        
         if (C >= M && C >= A) {
-            finalArchetype = { name: "Hipervigilante (Score: " + perfilSlug.toUpperCase() + ")", desc: "Sua mente não desliga. O diagnóstico indica um excesso de cortisol noturno que mantém seu cérebro em alerta máximo.", slug: perfilSlug };
+            finalArchetype = { name: "Hipervigilante (Cortisol)", desc: "Sua mente não desliga. O diagnóstico indica que seu quarto se tornou um gatilho de alerta para o seu sistema límbico.", slug: "alto" };
         } else if (M >= C && M >= A) {
-            finalArchetype = { name: "Fragmentado (Score: " + perfilSlug.toUpperCase() + ")", desc: "Seu ciclo circadiano está quebrado. O diagnóstico aponta interrupções na produção de melatonina precoce.", slug: perfilSlug };
+            finalArchetype = { name: "Fragmentado (Manutenção)", desc: "A interrupção de madrugada mostra que seu ciclo circadiano está falhando em sustentar as ondas de sono profundo.", slug: "moderado" };
         } else {
-            finalArchetype = { name: "Exausto Químico (Score: " + perfilSlug.toUpperCase() + ")", desc: "Seu sistema de pressão de sono está falhando. Identificamos uma resistência à adenosina natural.", slug: perfilSlug };
+            finalArchetype = { name: "Exausto Químico (Adenosina)", desc: "Mesmo dormindo, seu cérebro não limpa o cansaço. Você está operando com níveis extremos de exaustão mascarada.", slug: "baixo" };
         }
+        
         document.getElementById('archetype-name').innerText = finalArchetype.name;
         document.getElementById('archetype-desc').innerText = `"${finalArchetype.desc}"`;
     }
@@ -337,11 +335,11 @@
         const email = document.getElementById('email-input').value;
         if(!email.includes('@') || !email.includes('.')) return alert("Por favor, insira um e-mail válido.");
         
-        // --- EVENTO DE LEAD PARA O FACEBOOK ---
         if(typeof fbq === 'function') fbq('track', 'Lead');
-        // --------------------------------------
 
-        document.getElementById('btn-finalizar').innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> PROCESSANDO...`;
+        document.getElementById('btn-finalizar').innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> REDIRECIONANDO...`;
+        
+        // Mantendo o seu webhook do Google Apps Script
         const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxZ8UyyZ57aMR6O2o2O0jf61DS5nT-a5UdcxqueL0Blpz5FAgVf5JCMoamIjwAgOaV7/exec";
         try {
             await fetch(URL_PLANILHA, { 
@@ -353,8 +351,7 @@
                     perfil: finalArchetype.slug 
                 }) 
             });
-            // URL LIMPA: Apenas perfil (alto, moderado, baixo)
-            setTimeout(() => { window.location.href = `vendas.html?perfil=${finalArchetype.slug}`; }, 500);
+            setTimeout(() => { window.location.href = `vendas.html?perfil=${finalArchetype.slug}`; }, 600);
         } catch (e) { window.location.href = `vendas.html?perfil=${finalArchetype.slug}`; }
     }
 </script>
