@@ -114,85 +114,45 @@
             <div id="analise-texto" class="text-slate-500 text-sm font-medium">Cruzando padrões de cortisol e melatonina...</div>
         </div>
     </div>
-
-    <div id="screen-captura" class="screen">
-        <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-            <div class="w-full max-w-md bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-2xl border border-red-100 dark:border-red-900/30 relative overflow-hidden">
-                <div class="mb-6">
-                    <span class="bg-red-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm animate-pulse">Diagnóstico Concluído</span>
-                </div>
-                
-                <div id="archetype-spoiler" class="mb-8 p-6 bg-slate-50 dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 relative">
-                    <div class="absolute -right-4 -top-4 opacity-5">
-                        <span class="material-symbols-outlined text-8xl">warning</span>
-                    </div>
-                    <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-3">O seu Perfil Biológico:</p>
-                    <h3 id="archetype-name" class="text-2xl font-black text-slate-900 dark:text-white mb-3">Calculando...</h3>
-                    <div class="h-px w-12 bg-red-600 mx-auto mb-3"></div>
-                    <p id="archetype-desc" class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed italic">
-                        "Detectámos uma anomalia neurofisiológica..."
-                    </p>
-                </div>
-
-                <h2 class="text-xl font-black mb-4 text-slate-900 dark:text-white">Para onde enviamos a cópia do seu resultado?</h2>
-                <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
-                    Para sua segurança e consulta futura, insira o seu melhor e-mail abaixo. Você receberá seu diagnóstico e o acesso imediato ao Botão de Desligar do Cérebro para desativar o alerta da sua mente hoje mesmo.
-                </p>
-                <input id="email-input" type="email" placeholder="Digite o seu melhor e-mail aqui..." class="w-full p-4 rounded-xl border border-slate-300 dark:bg-slate-800 dark:border-slate-700 mb-4 focus:ring-4 focus:ring-red-500/20 outline-none transition-all font-medium text-center">
-                <button onclick="finalizarLead()" id="btn-finalizar" class="w-full bg-red-600 text-white font-black py-5 rounded-xl hover:bg-red-700 shadow-xl shadow-red-500/20 transition-all flex justify-center items-center gap-3 text-lg group">
-                    VER MEU RESULTADO AGORA <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                </button>
-                <p class="mt-4 text-[10px] text-slate-400 uppercase tracking-widest">Nós odiamos spam tanto quanto você.</p>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script>
-    // ARRAY REDUZIDO: 7 Perguntas focadas no Método ASK
     const questions = [
-        // 1. ENGAGEMENT (Quebrar o gelo)
         { title: "Como você descreveria suas manhãs ultimamente?", options: [
             {l: "Acordo cansado, mas funciono", v: 1, cat: "N"}, 
             {l: "Arrastado, precisando de muito café", v: 2, cat: "M"}, 
             {l: "Acordo parecendo um 'zumbi' atropelado", v: 4, cat: "A"}
         ], name: "q1" },
         
-        // 2. THE DECIDER (A pergunta de segmentação)
         { title: "Qual é o seu MAIOR obstáculo com o sono hoje?", options: [
             {l: "Minha mente não desliga ao encostar no travesseiro", v: 6, cat: "C"}, 
             {l: "Acordo de madrugada e não consigo voltar a dormir", v: 6, cat: "M"}, 
             {l: "Até durmo, mas o sono não recarrega minhas baterias", v: 6, cat: "A"}
         ], name: "q2" },
 
-        // 3. CONTEXT (Dor Visceral / Validação)
         { title: "O que acontece na sua cabeça quando você finalmente deita?", options: [
             {l: "Fica relativamente tranquila", v: 1, cat: "N"}, 
             {l: "Começo a repassar problemas e pendências", v: 3, cat: "C"}, 
             {l: "Bate uma ansiedade e um 'alerta máximo' autônomo", v: 5, cat: "C"}
         ], name: "q3" },
 
-        // 4. CONTEXT (Combate à crença / Higiene do sono)
         { title: "Você já tentou coisas como apagar a luz azul, meditar ou tomar chás... e sentiu que foi inútil?", options: [
             {l: "Nunca tentei", v: 1, cat: "N"}, 
             {l: "Funcionou um pouco no começo", v: 2, cat: "M"}, 
             {l: "Sim, tentar forçar o sono só me deixa com mais raiva", v: 5, cat: "C"}
         ], name: "q4" },
         
-        // 5. CONTEXT (Impacto na vida)
         { title: "Como a exaustão está afetando o seu dia a dia?", options: [
             {l: "Tira meu foco no trabalho", v: 3, cat: "A"}, 
             {l: "Estou perdendo a paciência com minha família", v: 5, cat: "C"}, 
             {l: "Sinto que a vida está apenas 'passando' por mim", v: 5, cat: "A"}
         ], name: "q5" },
 
-        // 6. CURIOSITY (Quebra de padrão)
         { title: "Você sabia que a obsessão por 'dormir 8 horas' é exatamente o que dispara o estresse do seu cérebro?", options: [
             {l: "Não fazia ideia", v: 3, cat: "N"}, 
             {l: "Faz sentido, fico ansioso só de olhar pro relógio", v: 5, cat: "C"}
         ], name: "q6" },
 
-        // 7. TRANSITION (Micro-compromisso final)
         { title: "Se houvesse um mecanismo mecânico de 15 minutos para desarmar o 'alerta' da sua mente sem usar pílulas, você aplicaria hoje?", options: [
             {l: "Com certeza absoluta", v: 10, cat: "N"}, 
             {l: "Eu faria qualquer coisa para dormir em paz", v: 10, cat: "N"}
@@ -278,7 +238,6 @@
         const msgList = feedbacks[cat] || feedbacks.N;
         const randomMsg = msgList[Math.floor(Math.random() * msgList.length)];
         
-        // Feedback dinâmico
         const feedbackEl = document.getElementById('dynamic-feedback');
         document.getElementById('feedback-text').innerText = randomMsg;
         feedbackEl.classList.remove('hidden');
@@ -310,7 +269,7 @@
         let i = 0;
         const interval = setInterval(() => {
             if(i < textos.length) { textoEl.innerText = textos[i]; i++; }
-            else { clearInterval(interval); definirArquétipo(); navigateTo('captura'); }
+            else { clearInterval(interval); definirArquétipo(); finalizarQuiz(); }
         }, 1000);
     }
 
@@ -326,27 +285,18 @@
         } else {
             finalArchetype = { name: "Exausto Químico (Adenosina)", desc: "Mesmo dormindo, seu cérebro não limpa o cansaço. Você está operando com níveis extremos de exaustão mascarada.", slug: "baixo" };
         }
-        
-        document.getElementById('archetype-name').innerText = finalArchetype.name;
-        document.getElementById('archetype-desc').innerText = `"${finalArchetype.desc}"`;
     }
 
-    async function finalizarLead() {
-        const email = document.getElementById('email-input').value;
-        if(!email.includes('@') || !email.includes('.')) return alert("Por favor, insira um e-mail válido.");
-        
+    async function finalizarQuiz() {
         if(typeof fbq === 'function') fbq('track', 'Lead');
 
-        document.getElementById('btn-finalizar').innerHTML = `<span class="material-symbols-outlined animate-spin">refresh</span> REDIRECIONANDO...`;
-        
-        // Mantendo o seu webhook do Google Apps Script
-        const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxaS5WEGgmIqbKztVN9jeV_Xr8E9KzhE77CGekHt_1DI2KX1ODHTVGtaHKYMZeoFh50/exec";
+        const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbxZ8UyyZ57aMR6O2o2O0jf61DS5nT-a5UdcxqueL0Blpz5FAgVf5JCMoamIjwAgOaV7/exec";
         try {
             await fetch(URL_PLANILHA, { 
                 method: 'POST', 
                 mode: 'no-cors', 
                 body: JSON.stringify({ 
-                    email: email, 
+                    email: "nao_coletado_direto_vendas", 
                     score: scores.total, 
                     perfil: finalArchetype.slug 
                 }) 
