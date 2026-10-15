@@ -28,6 +28,7 @@
         .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     </style>
 
+    <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -38,8 +39,7 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         
-        // LEMBRE-SE DE TROCAR O ID ABAIXO PELO SEU
-        fbq('init', 'SEU-ID-DO-PIXEL-AQUI'); 
+        fbq('init', '1388835336302586'); 
         fbq('track', 'PageView');
         
         // Evento mais importante: COMPRA REALIZADA
@@ -50,9 +50,32 @@
         });
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=SEU-ID-DO-PIXEL-AQUI&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1388835336302586&ev=PageView&noscript=1"
     /></noscript>
-    </head>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Pinterest Tag -->
+    <script>
+    !function(e){if(!window.pintrk){window.pintrk = function () {
+    window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+      n=window.pintrk;n.queue=[],n.version="3.0";var
+      t=document.createElement("script");t.async=!0,t.src=e;var
+      r=document.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+    pintrk('load', '2613908257119');
+    pintrk('page');
+    pintrk('track', 'checkout', {
+        value: 34.49,
+        currency: 'BRL'
+    });
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none;" alt=""
+      src="https://ct.pinterest.com/v3/?event=checkout&tid=2613908257119&noscript=1" />
+    </noscript>
+    <!-- End Pinterest Tag -->
+    
+</head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
 
     <div class="min-h-screen flex flex-col items-center justify-center p-4">
@@ -114,7 +137,7 @@
         </main>
 
         <footer class="mt-8 text-center text-sm text-slate-500">
-            <p>© 2024 Respiração Profunda. Todos os direitos reservados.</p>
+            <p>© 2026 Protocolo de Engenharia Respiratória. Todos os direitos reservados.</p>
         </footer>
 
     </div>
